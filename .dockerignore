@@ -1,0 +1,33 @@
+# Node / general stuff
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+docker-data/
+caddy_data/
+caddy_config/
+
+# Environment
+.env
+.env.*
+
+# Build artifacts
+dist/
+build/
+
+# Python cache (just in case)
+__pycache__/

@@ -1,0 +1,16 @@
+{
+    email rahullore@gmail.com
+}
+
+rahullore.com {
+    root * /usr/share/caddy
+    file_server
+
+    encode gzip zstd
+
+    @notFound {
+        not file
+    }
+    respond @notFound "404 Not Found" 404
+}
+

@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    container_name: rahullore-site
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    volumes:
+      # Persist Caddy certs/ACME data
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
