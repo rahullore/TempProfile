@@ -1,15 +1,16 @@
 services:
-  web:
-    build: .
-    container_name: rahullore-site
+  caddy:
+    image: rahullore/profession-profile:latest
+    container_name: profile
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-    restart: unless-stopped
+      - "443:443/udp"
     volumes:
-      # Persist Caddy certs/ACME data
       - caddy_data:/data
       - caddy_config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
 
 volumes:
   caddy_data:
