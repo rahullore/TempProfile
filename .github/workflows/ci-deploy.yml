@@ -15,14 +15,13 @@ jobs:
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build Image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/profession-profile:latest .
-
+      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/profession-profile:latest .
     - name: Push Image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/profession-profile:latest
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/profession-profile:latest
 
     - name: Deploy to VPS
       uses: appleboy/ssh-action@v1.2.0
