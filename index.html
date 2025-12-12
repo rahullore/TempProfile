@@ -13,6 +13,7 @@
             --text-main: #e5e7eb;   /* gray-200 */
             --text-muted: #9ca3af;  /* gray-400 */
             --border: rgba(148, 163, 184, 0.35);
+            --avatar-url: url("rahul.heif");
         }
 
         * {
@@ -82,6 +83,61 @@
             border-radius: 999px;
             background: #22c55e;
             box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .avatar-ring {
+            width: 104px;
+            aspect-ratio: 1 / 1;
+            padding: 6px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(14, 165, 233, 0.75));
+            box-shadow:
+                0 16px 40px rgba(56, 189, 248, 0.25),
+                0 0 0 1px rgba(148, 163, 184, 0.25);
+            position: relative;
+        }
+
+        .avatar-ring::after {
+            content: "";
+            position: absolute;
+            inset: -18%;
+            background: radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.35), transparent 40%);
+            filter: blur(26px);
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .avatar-inner {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            border-radius: 999px;
+            background-image: var(--avatar-url), radial-gradient(circle at 30% 30%, #38bdf8 0%, #0f172a 45%, #020617 100%);
+            background-size: cover, cover;
+            background-position: center;
+            border: 3px solid rgba(15, 23, 42, 0.75);
+            box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
+        }
+
+        .profile-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.15rem;
+        }
+
+        .profile-role {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.35;
         }
 
         h1 {
@@ -202,6 +258,16 @@
             <div class="pill">
                 <span class="pill-dot"></span>
                 <span>Personal site • In progress</span>
+            </div>
+
+            <div class="profile">
+                <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
+                    <div class="avatar-inner"></div>
+                </div>
+                <div>
+                    <div class="profile-name">Rahul Lore</div>
+                    <div class="profile-role">Software Architect / Principal Software Engineer</div>
+                </div>
             </div>
 
             <h1>Coming soon.</h1>
