@@ -4,6 +4,7 @@ FROM caddy:2-alpine
 # Copy your static site files (HTML + PDF) into Caddy's default web root
 COPY index.html /usr/share/caddy/index.html
 COPY rahullore_OP.pdf /usr/share/caddy/rahullore_OP.pdf
+COPY cover_letter.pdf /usr/share/caddy/rahullore_CL.pdf
 
 # Copy your Caddy configuration
 # (this file will define your domain and enable HTTPS)
