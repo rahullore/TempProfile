@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rahul Lore – Coming Soon</title>
+    <title>Rahul Lore – Software Architect</title>
     <style>
         :root {
-            --bg: #0f172a;          /* slate-900 */
-            --card-bg: #020617;     /* slate-950 */
-            --accent: #38bdf8;      /* sky-400 */
-            --accent-hover: #0ea5e9;/* sky-500 */
-            --text-main: #e5e7eb;   /* gray-200 */
-            --text-muted: #9ca3af;  /* gray-400 */
+            --bg: #0f172a;
+            --card-bg: #020617;
+            --surface: rgba(15, 23, 42, 0.72);
+            --surface-strong: rgba(15, 23, 42, 0.92);
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
             --border: rgba(148, 163, 184, 0.35);
             --avatar-url: url("rahul.jpeg");
         }
@@ -24,8 +26,7 @@
 
         body {
             min-height: 100vh;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background: radial-gradient(circle at top, #1e293b, #020617 55%, #000 100%);
             color: var(--text-main);
             display: flex;
@@ -36,10 +37,10 @@
 
         .card {
             width: 100%;
-            max-width: 480px;
+            max-width: 880px;
             background: radial-gradient(circle at top left, #0f172a, #020617);
             border-radius: 24px;
-            padding: 2.25rem 2rem;
+            padding: 2.4rem 2.2rem;
             border: 1px solid var(--border);
             box-shadow:
                 0 24px 60px rgba(15, 23, 42, 0.9),
@@ -62,19 +63,24 @@
             z-index: 1;
         }
 
-        .pill {
+        .pill,
+        .section-label,
+        .tag {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.25rem 0.7rem;
             border-radius: 999px;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            background: var(--surface-strong);
+        }
+
+        .pill {
+            padding: 0.28rem 0.75rem;
             font-size: 0.72rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--accent);
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.25rem;
         }
 
         .pill-dot {
@@ -85,15 +91,16 @@
             box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
         }
 
-        .profile {
-            display: flex;
+        .hero {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.2rem;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.4rem;
         }
 
         .avatar-ring {
-            width: 104px;
+            width: 112px;
             aspect-ratio: 1 / 1;
             padding: 6px;
             border-radius: 999px;
@@ -128,61 +135,157 @@
         }
 
         .profile-name {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--text-main);
             margin-bottom: 0.15rem;
         }
 
         .profile-role {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.35;
+            line-height: 1.4;
         }
 
         h1 {
-            font-size: clamp(1.9rem, 3vw, 2.2rem);
-            line-height: 1.1;
-            margin-bottom: 0.6rem;
+            font-size: clamp(2.15rem, 4vw, 3rem);
+            line-height: 1.08;
+            margin-bottom: 0.75rem;
+            max-width: 12ch;
         }
 
         .subtitle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-muted);
+            margin-bottom: 1.1rem;
+            line-height: 1.6;
+            max-width: 65ch;
+        }
+
+        .summary {
+            background: var(--surface);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 18px;
+            padding: 1rem 1rem 1.1rem;
+            color: var(--text-main);
+            line-height: 1.65;
+            margin-bottom: 1.35rem;
+        }
+
+        .meta {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .meta-card {
+            padding: 0.9rem 1rem;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+        }
+
+        .meta strong {
+            display: block;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            font-size: 0.92rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
             margin-bottom: 1.6rem;
+        }
+
+        .tag {
+            padding: 0.45rem 0.8rem;
+            color: var(--text-main);
+            font-size: 0.83rem;
+            background: rgba(8, 47, 73, 0.52);
         }
 
         .divider {
             height: 1px;
             border: none;
-            background: linear-gradient(
-                to right,
-                transparent,
-                rgba(148, 163, 184, 0.5),
-                transparent
-            );
-            margin: 1.4rem 0;
+            background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.5), transparent);
+            margin: 1.6rem 0;
         }
 
-        .meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1.4rem;
-            flex-wrap: wrap;
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.95fr;
+            gap: 1.25rem;
         }
 
-        .meta strong {
+        .section {
+            padding: 1.15rem;
+            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.56);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+        }
+
+        .section-label {
+            padding: 0.3rem 0.7rem;
+            color: var(--accent);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+
+        .section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .experience-list,
+        .market-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .experience-item,
+        .market-item {
+            padding: 0.9rem 0.95rem;
+            border-radius: 16px;
+            background: rgba(2, 6, 23, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+        }
+
+        .experience-item strong,
+        .market-item strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-size: 0.94rem;
             color: var(--text-main);
-            font-weight: 500;
+        }
+
+        .experience-item p,
+        .market-item p,
+        .section p,
+        .section li {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.93rem;
+        }
+
+        .value-list {
+            padding-left: 1.15rem;
+            display: grid;
+            gap: 0.65rem;
         }
 
         .actions {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
+            margin-top: 1.5rem;
         }
 
         .btn-primary,
@@ -191,34 +294,25 @@
             align-items: center;
             justify-content: center;
             gap: 0.4rem;
-            padding: 0.6rem 1rem;
+            padding: 0.7rem 1rem;
             border-radius: 999px;
             font-size: 0.9rem;
             text-decoration: none;
             border: 1px solid transparent;
             cursor: pointer;
-            transition:
-                background 0.18s ease,
-                color 0.18s ease,
-                transform 0.12s ease,
-                box-shadow 0.18s ease,
-                border-color 0.18s ease;
+            transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease, border-color 0.18s ease;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--accent), var(--accent-hover));
             color: #020617;
             font-weight: 600;
-            box-shadow:
-                0 12px 30px rgba(56, 189, 248, 0.35),
-                0 0 0 1px rgba(15, 23, 42, 0.9);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35), 0 0 0 1px rgba(15, 23, 42, 0.9);
         }
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow:
-                0 18px 40px rgba(56, 189, 248, 0.5),
-                0 0 0 1px rgba(15, 23, 42, 0.9);
+            box-shadow: 0 18px 40px rgba(56, 189, 248, 0.5), 0 0 0 1px rgba(15, 23, 42, 0.9);
             background: linear-gradient(135deg, var(--accent-hover), var(--accent));
         }
 
@@ -239,15 +333,25 @@
         }
 
         .footer-note {
-            margin-top: 1.4rem;
-            font-size: 0.75rem;
+            margin-top: 1.35rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 760px) {
             .card {
-                padding: 1.8rem 1.4rem;
+                padding: 1.8rem 1.35rem;
                 border-radius: 20px;
+            }
+
+            .hero,
+            .content-grid,
+            .meta {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                max-width: none;
             }
         }
     </style>
@@ -257,39 +361,123 @@
         <div class="card-inner">
             <div class="pill">
                 <span class="pill-dot"></span>
-                <span>Personal site • In progress</span>
+                <span>Open to impactful architecture and AI-led product work</span>
             </div>
 
-            <div class="profile">
+            <div class="hero">
                 <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
                     <div class="avatar-inner"></div>
                 </div>
                 <div>
                     <div class="profile-name">Rahul Lore</div>
-                    <div class="profile-role">Software Architect / Principal Software Engineer</div>
+                    <div class="profile-role">Software Architect • Principal Software Engineer • AI-Ready Product Builder</div>
                 </div>
             </div>
 
-            <h1>Coming soon.</h1>
+            <h1>Modern software leadership with proven delivery depth.</h1>
             <p class="subtitle">
-                 Software Architect Specializing in Critical Healthcare Solutions | 20 Years of .NET Engineering | Delivering Usable, Scalable Architecture 
+                Software Architect with 20+ years of engineering experience spanning critical healthcare solutions, scalable .NET platforms,
+                agentic AI integration, and software designed for constrained or device-connected environments.
             </p>
+
+            <div class="summary">
+                I build employer-ready software systems that balance architecture, delivery speed, and real-world usability. My focus is on
+                translating complex business and operational needs into reliable products, while extending established platforms with the kind of
+                AI capabilities, automation, and connected-device thinking that today’s market increasingly values.
+            </div>
+
+            <div class="meta">
+                <div class="meta-card">
+                    <strong>Core positioning</strong>
+                    Senior architect who can modernize existing systems without losing delivery discipline.
+                </div>
+                <div class="meta-card">
+                    <strong>Current market fit</strong>
+                    AI-enabled product strategy, workflow automation, and practical modernization for enterprise teams.
+                </div>
+                <div class="meta-card">
+                    <strong>Technical range</strong>
+                    Healthcare platforms, .NET engineering, agentic AI, and IoT-aware software design.
+                </div>
+            </div>
+
+            <div class="tag-row">
+                <span class="tag">Agentic AI workflows</span>
+                <span class="tag">IoT device-optimized software</span>
+                <span class="tag">Healthcare-grade systems</span>
+                <span class="tag">Scalable .NET architecture</span>
+                <span class="tag">Employer-focused product delivery</span>
+            </div>
 
             <hr class="divider" />
 
-            <div class="meta">
-                <div>
-                    <strong>Rahul Lore</strong><br />
-                    Software Architect / Principal Software Engineer
-                </div>
-                <div>
-                    <strong>Status</strong><br />
-                    Launching initial version soon
-                </div>
+            <div class="content-grid">
+                <section class="section">
+                    <div class="section-label">Work experience highlights</div>
+                    <h2>Where senior delivery meets current demand</h2>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <strong>Enterprise architecture and modernization</strong>
+                            <p>
+                                Led architecture and engineering across long-lived business-critical systems, improving maintainability,
+                                scalability, and delivery confidence while aligning technical decisions with business priorities.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <strong>Agentic AI capability integration</strong>
+                            <p>
+                                Expanding products with AI-assisted workflows, multi-step automation, intelligent orchestration, and practical
+                                human-in-the-loop experiences that help teams move faster without sacrificing control.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <strong>IoT and device-aware software thinking</strong>
+                            <p>
+                                Building and optimizing software for environments where device connectivity, performance, reliability,
+                                telemetry, and efficient resource usage matter as much as feature completeness.
+                            </p>
+                        </div>
+                        <div class="experience-item">
+                            <strong>Healthcare and regulated-domain credibility</strong>
+                            <p>
+                                Deep experience in solutions where usability, correctness, stability, and operational trust are essential — a
+                                strong foundation for employers looking for low-drama, high-accountability technical leadership.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <div class="section-label">What employers get</div>
+                    <h2>Market-aligned strengths</h2>
+                    <div class="market-list">
+                        <div class="market-item">
+                            <strong>AI without hype</strong>
+                            <p>Practical use of agentic AI to automate workflows, improve decision support, and create measurable productivity gains.</p>
+                        </div>
+                        <div class="market-item">
+                            <strong>Connected product mindset</strong>
+                            <p>Comfort working across application, integration, and device-adjacent concerns for software shaped by real-world constraints.</p>
+                        </div>
+                        <div class="market-item">
+                            <strong>Senior execution</strong>
+                            <p>Ability to translate strategy into shipped outcomes, mentor teams, and keep architecture decisions grounded in delivery.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
 
-            <div class="actions"> 
-                <!-- TODO: replace href with your real LinkedIn URL -->
+            <div class="section" style="margin-top: 1.25rem;">
+                <div class="section-label">Potential employer value</div>
+                <h2>Best fit for teams that need both stability and forward motion</h2>
+                <ul class="value-list">
+                    <li>Modernize established platforms with AI-enabled experiences that fit real operations, not demo-only scenarios.</li>
+                    <li>Strengthen software used in connected, performance-sensitive, or operationally critical environments.</li>
+                    <li>Bridge architecture, hands-on engineering, and product delivery for organizations hiring senior technical leaders.</li>
+                </ul>
+            </div>
+
+            <div class="actions">
                 <a
                     class="btn-primary"
                     href="https://www.linkedin.com/in/rahullore"
@@ -305,22 +493,17 @@
                     <span>Contact me</span>
                 </a>
                 <a class="btn-ghost" href="rahullore_CL.pdf" download>
-                    <span class="btn-icon">✉️</span>
+                    <span class="btn-icon">📝</span>
                     <span>Cover Letter</span>
                 </a>
-                <a
-                    class="btn-ghost"
-                    href="rahullore_OP.pdf"
-                    download
-                >
+                <a class="btn-ghost" href="rahullore_OP.pdf" download>
                     <span class="btn-icon">📄</span>
                     <span>Download Resume (PDF)</span>
                 </a>
-
             </div>
 
             <p class="footer-note">
-                This page is intentionally minimal while I build out the full experience.
+                This profile now highlights experience areas that are highly relevant to current hiring demand while keeping a concise personal-brand presentation.
             </p>
         </div>
     </main>
