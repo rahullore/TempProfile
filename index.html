@@ -29,18 +29,16 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background: radial-gradient(circle at top, #1e293b, #020617 55%, #000 100%);
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
+            padding: 2rem 1.25rem 3rem;
         }
 
         .card {
             width: 100%;
-            max-width: 880px;
+            max-width: 1080px;
+            margin: 0 auto;
             background: radial-gradient(circle at top left, #0f172a, #020617);
-            border-radius: 24px;
-            padding: 2.4rem 2.2rem;
+            border-radius: 28px;
+            padding: 2.6rem;
             border: 1px solid var(--border);
             box-shadow:
                 0 24px 60px rgba(15, 23, 42, 0.9),
@@ -97,6 +95,31 @@
             gap: 1.2rem;
             align-items: center;
             margin-bottom: 1.4rem;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .hero-panel,
+        .spotlight-panel {
+            padding: 1.35rem;
+            border-radius: 22px;
+            background: rgba(15, 23, 42, 0.54);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-panel {
+            min-width: 0;
+        }
+
+        .spotlight-panel h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.95rem;
         }
 
         .avatar-ring {
@@ -165,13 +188,13 @@
         }
 
         .summary {
-            background: var(--surface);
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.16);
             border-radius: 18px;
             padding: 1rem 1rem 1.1rem;
             color: var(--text-main);
             line-height: 1.65;
-            margin-bottom: 1.35rem;
+            margin-bottom: 0;
         }
 
         .meta {
@@ -181,6 +204,11 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 0.9rem;
             margin-bottom: 1.4rem;
+        }
+
+        .meta.meta-rail {
+            grid-template-columns: 1fr;
+            margin-bottom: 1rem;
         }
 
         .meta-card {
@@ -203,6 +231,10 @@
             flex-wrap: wrap;
             gap: 0.65rem;
             margin-bottom: 1.6rem;
+        }
+
+        .tag-rail {
+            margin-bottom: 1rem;
         }
 
         .tag {
@@ -290,6 +322,27 @@
             margin-top: 1.5rem;
         }
 
+        .hero-actions {
+            margin-top: 1.2rem;
+        }
+
+        .quick-links {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .quick-links .btn-ghost,
+        .quick-links .btn-primary {
+            width: 100%;
+        }
+
+        .mini-note {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+
         .btn-primary,
         .btn-ghost {
             display: inline-flex;
@@ -338,16 +391,35 @@
             margin-top: 1.35rem;
             font-size: 0.78rem;
             color: var(--text-muted);
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-layout,
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-panel {
+                order: -1;
+            }
+
+            .meta {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 760px) {
             .card {
-                padding: 1.8rem 1.35rem;
+                padding: 1.55rem 1rem;
                 border-radius: 20px;
             }
 
-            .hero,
-            .content-grid,
+            .hero {
+                grid-template-columns: 1fr;
+                justify-items: start;
+            }
+
             .meta {
                 grid-template-columns: 1fr;
             }
@@ -361,54 +433,103 @@
 <body>
     <main class="card">
         <div class="card-inner">
-            <div class="pill">
-                <span class="pill-dot"></span>
-                <span>Open to software architecture and principal engineering roles</span>
-            </div>
+            <div class="hero-layout">
+                <section class="hero-panel">
+                    <div class="pill">
+                        <span class="pill-dot"></span>
+                        <span>Open to software architecture and principal engineering roles</span>
+                    </div>
 
-            <div class="hero">
-                <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
-                    <div class="avatar-inner"></div>
-                </div>
-                <div>
-                    <div class="profile-name">Rahul Lore</div>
-                    <div class="profile-role">Software Architect • Principal Software Engineer • Distributed Systems, Healthcare Platforms, and Applied AI</div>
-                </div>
-            </div>
+                    <div class="hero">
+                        <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
+                            <div class="avatar-inner"></div>
+                        </div>
+                        <div>
+                            <div class="profile-name">Rahul Lore</div>
+                            <div class="profile-role">Software Architect • Principal Software Engineer • Distributed Systems, Healthcare Platforms, and Applied AI</div>
+                        </div>
+                    </div>
 
-            <h1>Built real-time healthcare platforms and shipped AI-assisted .NET systems with a live demo employers can review.</h1>
-            <p class="subtitle">
-                Software Architect with 20+ years of engineering experience across healthcare, distributed .NET services, platform modernization,
-                and applied AI work including Semantic Kernel, embeddings, semantic search, and AI-assisted workflows.
-            </p>
+                    <h1>Built real-time healthcare platforms and shipped AI-assisted .NET systems with a live demo employers can review.</h1>
+                    <p class="subtitle">
+                        Software Architect with 20+ years of engineering experience across healthcare, distributed .NET services, platform modernization,
+                        and applied AI work including Semantic Kernel, embeddings, semantic search, and AI-assisted workflows.
+                    </p>
 
-            <div class="summary">
-                My recent work includes architecting Kafka- and SignalR-based streaming for patient vitals and waveform telemetry, modernizing
-                legacy healthcare applications into distributed services, and building a hosted .NET and Nuxt demo that shows how deterministic
-                business logic can work alongside embeddings, semantic search, and AI-assisted workflows.
-            </div>
+                    <div class="summary">
+                        My recent work includes architecting Kafka- and SignalR-based streaming for patient vitals and waveform telemetry, modernizing
+                        legacy healthcare applications into distributed services, and building a hosted .NET and Nuxt demo that shows how deterministic
+                        business logic can work alongside embeddings, semantic search, and AI-assisted workflows.
+                    </div>
 
-            <div class="meta">
-                <div class="meta-card">
-                    <strong>Core positioning</strong>
-                    Software architect focused on modernizing long-lived healthcare platforms and adding practical AI capabilities without hype.
-                </div>
-                <div class="meta-card">
-                    <strong>Recent engineering focus</strong>
-                    Real-time patient telemetry, distributed backend services, deployment automation, and AI-assisted workflows backed by a live demo.
-                </div>
-                <div class="meta-card">
-                    <strong>Technical range</strong>
-                    .NET, Kafka, SignalR, Docker, Azure, SQL Server, Semantic Kernel, and OpenAI embeddings.
-                </div>
-            </div>
+                    <div class="actions hero-actions">
+                        <a
+                            class="btn-primary"
+                            href="https://rahullore.com/demo1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class="btn-icon">🤖</span>
+                            <span>View live AI demo</span>
+                        </a>
+                        <a
+                            class="btn-ghost"
+                            href="https://www.linkedin.com/in/rahullore"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class="btn-icon">🔗</span>
+                            <span>View LinkedIn</span>
+                        </a>
+                        <a class="btn-ghost" href="mailto:rahullore@gmail.com" rel="noopener">
+                            <span class="btn-icon">✉️</span>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </section>
 
-            <div class="tag-row">
-                <span class="tag">Kafka event streaming</span>
-                <span class="tag">Semantic Kernel</span>
-                <span class="tag">Embeddings + semantic search</span>
-                <span class="tag">Healthcare systems</span>
-                <span class="tag">Containerized CI/CD</span>
+                <aside class="spotlight-panel">
+                    <div class="section-label">At a glance</div>
+                    <h2>What teams can scan in under a minute</h2>
+
+                    <div class="meta meta-rail">
+                        <div class="meta-card">
+                            <strong>Core positioning</strong>
+                            Software architect focused on modernizing long-lived healthcare platforms and adding practical AI capabilities without hype.
+                        </div>
+                        <div class="meta-card">
+                            <strong>Recent engineering focus</strong>
+                            Real-time patient telemetry, distributed backend services, deployment automation, and AI-assisted workflows backed by a live demo.
+                        </div>
+                        <div class="meta-card">
+                            <strong>Technical range</strong>
+                            .NET, Kafka, SignalR, Docker, Azure, SQL Server, Semantic Kernel, and OpenAI embeddings.
+                        </div>
+                    </div>
+
+                    <div class="tag-row tag-rail">
+                        <span class="tag">Kafka event streaming</span>
+                        <span class="tag">Semantic Kernel</span>
+                        <span class="tag">Embeddings + semantic search</span>
+                        <span class="tag">Healthcare systems</span>
+                        <span class="tag">Containerized CI/CD</span>
+                    </div>
+
+                    <p class="mini-note">
+                        Includes a live demo plus downloadable resume and cover letter so hiring managers can quickly review both the narrative and the work.
+                    </p>
+
+                    <div class="quick-links">
+                        <a class="btn-ghost" href="rahullore_OP.pdf" download>
+                            <span class="btn-icon">📄</span>
+                            <span>Download Resume (PDF)</span>
+                        </a>
+                        <a class="btn-ghost" href="rahullore_CL.pdf" download>
+                            <span class="btn-icon">📝</span>
+                            <span>Download Cover Letter</span>
+                        </a>
+                    </div>
+                </aside>
             </div>
 
             <hr class="divider" />
@@ -469,7 +590,7 @@
                 </section>
             </div>
 
-            <div class="section" style="margin-top: 1.25rem;">
+            <div class="section value-section" style="margin-top: 1.25rem;">
                 <div class="section-label">Potential employer value</div>
                 <h2>Best fit for teams that need credible architecture and hands-on delivery</h2>
                 <ul class="value-list">
@@ -479,42 +600,8 @@
                 </ul>
             </div>
 
-            <div class="actions">
-                <a
-                    class="btn-primary"
-                    href="https://rahullore.com/demo1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="btn-icon">🤖</span>
-                    <span>View live AI demo</span>
-                </a>
-                <a
-                    class="btn-ghost"
-                    href="https://www.linkedin.com/in/rahullore"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="btn-icon">🔗</span>
-                    <span>View my LinkedIn</span>
-                </a>
-
-                <a class="btn-ghost" href="mailto:rahullore@gmail.com" rel="noopener">
-                    <span class="btn-icon">✉️</span>
-                    <span>Contact me</span>
-                </a>
-                <a class="btn-ghost" href="rahullore_CL.pdf" download>
-                    <span class="btn-icon">📝</span>
-                    <span>Cover Letter</span>
-                </a>
-                <a class="btn-ghost" href="rahullore_OP.pdf" download>
-                    <span class="btn-icon">📄</span>
-                    <span>Download Resume (PDF)</span>
-                </a>
-            </div>
-
             <p class="footer-note">
-                This profile now highlights experience areas that are highly relevant to current hiring demand while keeping a concise personal-brand presentation.
+                Polished into a clearer, scan-friendly profile for technical hiring managers while keeping the content grounded and concise.
             </p>
         </div>
     </main>
