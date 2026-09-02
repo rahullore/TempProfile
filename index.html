@@ -6,16 +6,54 @@
     <title>Rahul Lore – Software Architect</title>
     <style>
         :root {
-            --bg: #0f172a;
-            --card-bg: #020617;
+            color-scheme: dark light;
+            --bg: #09111f;
+            --bg-glow: rgba(56, 189, 248, 0.12);
+            --panel: rgba(9, 17, 31, 0.84);
+            --panel-strong: rgba(15, 23, 42, 0.94);
+            --panel-soft: rgba(15, 23, 42, 0.62);
             --surface: rgba(15, 23, 42, 0.72);
-            --surface-strong: rgba(15, 23, 42, 0.92);
+            --surface-alt: rgba(8, 47, 73, 0.32);
+            --text-main: #e5eef9;
+            --text-muted: #98a6bb;
+            --text-soft: #c8d4e5;
             --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --text-main: #e5e7eb;
-            --text-muted: #9ca3af;
-            --border: rgba(148, 163, 184, 0.35);
+            --accent-strong: #0ea5e9;
+            --accent-soft: rgba(56, 189, 248, 0.14);
+            --success: #22c55e;
+            --border-strong: rgba(148, 163, 184, 0.28);
+            --border-soft: rgba(148, 163, 184, 0.16);
+            --shadow-lg: 0 28px 70px rgba(2, 6, 23, 0.48);
+            --shadow-md: 0 16px 36px rgba(2, 6, 23, 0.32);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 18px;
+            --radius-sm: 14px;
+            --max-width: 1120px;
             --avatar-url: url("rahul.jpeg");
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #edf3fb;
+                --bg-glow: rgba(14, 165, 233, 0.16);
+                --panel: rgba(255, 255, 255, 0.82);
+                --panel-strong: rgba(255, 255, 255, 0.94);
+                --panel-soft: rgba(255, 255, 255, 0.82);
+                --surface: rgba(246, 250, 255, 0.96);
+                --surface-alt: rgba(224, 242, 254, 0.88);
+                --text-main: #0f172a;
+                --text-muted: #475569;
+                --text-soft: #1e293b;
+                --accent: #0284c7;
+                --accent-strong: #0369a1;
+                --accent-soft: rgba(2, 132, 199, 0.12);
+                --success: #16a34a;
+                --border-strong: rgba(148, 163, 184, 0.35);
+                --border-soft: rgba(148, 163, 184, 0.22);
+                --shadow-lg: 0 28px 70px rgba(148, 163, 184, 0.22);
+                --shadow-md: 0 16px 36px rgba(148, 163, 184, 0.18);
+            }
         }
 
         * {
@@ -24,586 +62,762 @@
             padding: 0;
         }
 
-        body {
-            min-height: 100vh;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #1e293b, #020617 55%, #000 100%);
-            color: var(--text-main);
-            padding: 2rem 1.25rem 3rem;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .card {
+        body {
+            min-height: 100vh;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top, var(--bg-glow), transparent 32%),
+                linear-gradient(180deg, color-mix(in srgb, var(--bg) 88%, #020617 12%), var(--bg));
+            color: var(--text-main);
+            padding: 1.5rem;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-shell {
             width: 100%;
-            max-width: 1080px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            background: radial-gradient(circle at top left, #0f172a, #020617);
-            border-radius: 28px;
-            padding: 2.6rem;
-            border: 1px solid var(--border);
-            box-shadow:
-                0 24px 60px rgba(15, 23, 42, 0.9),
-                0 0 0 1px rgba(15, 23, 42, 0.9);
-            position: relative;
+            border-radius: calc(var(--radius-xl) + 4px);
+            background: linear-gradient(180deg, var(--panel), var(--panel-strong));
+            border: 1px solid var(--border-strong);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(18px);
             overflow: hidden;
         }
 
-        .card::before {
+        .page-shell::before {
             content: "";
             position: absolute;
-            inset: -40%;
-            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 60%);
-            opacity: 0.8;
+            inset: 0;
             pointer-events: none;
         }
 
-        .card-inner {
+        .page-inner {
             position: relative;
-            z-index: 1;
+            padding: 1.15rem;
         }
 
+        .topbar,
+        .hero-card,
+        .sidebar-card,
+        .section-card,
+        .cta-card,
+        .footer-card {
+            border: 1px solid var(--border-soft);
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.15rem;
+            margin-bottom: 1.15rem;
+            background: color-mix(in srgb, var(--surface) 78%, transparent 22%);
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.18rem;
+        }
+
+        .brand-name {
+            font-size: 0.98rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.55rem;
+        }
+
+        .nav-links a,
         .pill,
-        .section-label,
+        .eyebrow,
         .tag {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.45rem;
             border-radius: 999px;
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            background: var(--surface-strong);
+            border: 1px solid var(--border-soft);
+            text-decoration: none;
         }
 
-        .pill {
-            padding: 0.28rem 0.75rem;
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1.25rem;
+        .nav-links a {
+            padding: 0.55rem 0.85rem;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            background: color-mix(in srgb, var(--surface) 70%, transparent 30%);
         }
 
-        .pill-dot {
-            width: 0.45rem;
-            height: 0.45rem;
-            border-radius: 999px;
-            background: #22c55e;
-            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1.2rem;
-            align-items: center;
-            margin-bottom: 1.4rem;
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text-main);
+            border-color: color-mix(in srgb, var(--accent) 40%, var(--border-soft));
+            background: var(--accent-soft);
+            outline: none;
         }
 
         .hero-layout {
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
-            gap: 1.25rem;
+            grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.82fr);
+            gap: 1.15rem;
             align-items: start;
+            margin-bottom: 1.15rem;
         }
 
-        .hero-panel,
-        .spotlight-panel {
-            padding: 1.35rem;
-            border-radius: 22px;
-            background: rgba(15, 23, 42, 0.54);
-            border: 1px solid rgba(148, 163, 184, 0.22);
-            backdrop-filter: blur(10px);
+        .hero-card,
+        .sidebar-card,
+        .section-card,
+        .cta-card,
+        .footer-card {
+            padding: 1.4rem;
         }
 
-        .hero-panel {
+        .hero-card {
+            display: grid;
+            gap: 1.35rem;
             min-width: 0;
         }
 
-        .spotlight-panel h2 {
-            font-size: 1.1rem;
-            margin-bottom: 0.95rem;
-        }
-
-        .avatar-ring {
-            width: 112px;
-            aspect-ratio: 1 / 1;
-            padding: 6px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(14, 165, 233, 0.75));
-            box-shadow:
-                0 16px 40px rgba(56, 189, 248, 0.25),
-                0 0 0 1px rgba(148, 163, 184, 0.25);
-            position: relative;
-        }
-
-        .avatar-ring::after {
-            content: "";
-            position: absolute;
-            inset: -18%;
-            background: radial-gradient(circle at 70% 20%, rgba(56, 189, 248, 0.35), transparent 40%);
-            filter: blur(26px);
-            opacity: 0.7;
-            z-index: 0;
-        }
-
-        .avatar-inner {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            border-radius: 999px;
-            background-image: var(--avatar-url), radial-gradient(circle at 30% 30%, #38bdf8 0%, #0f172a 45%, #020617 100%);
-            background-size: cover, cover;
-            background-position: center;
-            border: 3px solid rgba(15, 23, 42, 0.75);
-            box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
-        }
-
-        .profile-name {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 0.15rem;
-        }
-
-        .profile-role {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 4vw, 3.1rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
-            max-width: 18ch;
-            text-wrap: balance;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.1rem;
-            line-height: 1.6;
-            max-width: 65ch;
-        }
-
-        .summary {
-            background: rgba(2, 6, 23, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.16);
-            border-radius: 18px;
-            padding: 1rem 1rem 1.1rem;
-            color: var(--text-main);
-            line-height: 1.65;
-            margin-bottom: 0;
-        }
-
-        .meta {
-            font-size: 0.84rem;
-            color: var(--text-muted);
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.9rem;
-            margin-bottom: 1.4rem;
-        }
-
-        .meta.meta-rail {
-            grid-template-columns: 1fr;
-            margin-bottom: 1rem;
-        }
-
-        .meta-card {
-            padding: 0.9rem 1rem;
-            border-radius: 16px;
-            background: rgba(15, 23, 42, 0.55);
-            border: 1px solid rgba(148, 163, 184, 0.22);
-        }
-
-        .meta strong {
-            display: block;
-            color: var(--text-main);
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-            font-size: 0.92rem;
-        }
-
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.65rem;
-            margin-bottom: 1.6rem;
-        }
-
-        .tag-rail {
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            padding: 0.45rem 0.8rem;
-            color: var(--text-main);
-            font-size: 0.83rem;
-            background: rgba(8, 47, 73, 0.52);
-        }
-
-        .divider {
-            height: 1px;
-            border: none;
-            background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.5), transparent);
-            margin: 1.6rem 0;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.95fr;
-            gap: 1.25rem;
-        }
-
-        .section {
-            padding: 1.15rem;
-            border-radius: 20px;
-            background: rgba(15, 23, 42, 0.56);
-            border: 1px solid rgba(148, 163, 184, 0.22);
-        }
-
-        .section-label {
-            padding: 0.3rem 0.7rem;
+        .pill {
+            width: fit-content;
+            padding: 0.38rem 0.78rem;
+            background: color-mix(in srgb, var(--accent-soft) 65%, var(--surface) 35%);
             color: var(--accent);
             font-size: 0.72rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-bottom: 0.9rem;
         }
 
-        .section h2 {
-            font-size: 1.1rem;
-            margin-bottom: 0.85rem;
+        .pill-dot {
+            width: 0.48rem;
+            height: 0.48rem;
+            border-radius: 999px;
+            background: var(--success);
+            box-shadow: 0 0 0 6px color-mix(in srgb, var(--success) 26%, transparent);
         }
 
-        .experience-list,
-        .market-list {
+        .hero-intro {
             display: grid;
-            gap: 0.8rem;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: center;
         }
 
-        .experience-item,
-        .market-item {
-            padding: 0.9rem 0.95rem;
-            border-radius: 16px;
-            background: rgba(2, 6, 23, 0.65);
-            border: 1px solid rgba(148, 163, 184, 0.16);
+        .avatar-ring {
+            width: 108px;
+            aspect-ratio: 1 / 1;
+            padding: 6px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 45%, transparent), color-mix(in srgb, var(--accent-strong) 72%, transparent));
+            box-shadow: 0 18px 40px color-mix(in srgb, var(--accent) 22%, transparent);
         }
 
-        .experience-item strong,
-        .market-item strong {
-            display: block;
-            margin-bottom: 0.35rem;
-            font-size: 0.94rem;
-            color: var(--text-main);
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 999px;
+            background-image: var(--avatar-url), radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 60%, white), #0f172a 48%, #020617 100%);
+            background-size: cover, cover;
+            background-position: center;
+            border: 3px solid color-mix(in srgb, var(--surface) 85%, #020617 15%);
         }
 
-        .experience-item p,
-        .market-item p,
-        .section p,
-        .section li {
+        .profile-name {
+            font-size: 1.12rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-role {
             color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.93rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            max-width: 48ch;
         }
 
-        .value-list {
-            padding-left: 1.15rem;
+        .hero-copy {
             display: grid;
-            gap: 0.65rem;
+            gap: 1rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.03em;
+            text-wrap: balance;
+        }
+
+        h1 {
+            font-size: clamp(2.35rem, 4.5vw, 4rem);
+            line-height: 1.02;
+            max-width: 12ch;
+        }
+
+        .lede {
+            max-width: 66ch;
+            color: var(--text-soft);
+            font-size: 1.02rem;
+            line-height: 1.72;
+        }
+
+        .summary-card {
+            padding: 1rem 1.05rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-soft);
+            background: color-mix(in srgb, var(--panel-soft) 84%, transparent 16%);
+            color: var(--text-soft);
+            line-height: 1.68;
         }
 
         .actions {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .hero-actions {
-            margin-top: 1.2rem;
-        }
-
-        .quick-links {
-            display: grid;
-            gap: 0.7rem;
-        }
-
-        .quick-links .btn-ghost,
-        .quick-links .btn-primary {
-            width: 100%;
-        }
-
-        .mini-note {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.55;
-            margin-bottom: 1rem;
         }
 
         .btn-primary,
-        .btn-ghost {
+        .btn-secondary,
+        .btn-subtle {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
-            padding: 0.7rem 1rem;
+            gap: 0.45rem;
+            min-height: 44px;
+            padding: 0.78rem 1rem;
             border-radius: 999px;
-            font-size: 0.9rem;
-            text-decoration: none;
             border: 1px solid transparent;
-            cursor: pointer;
-            transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-            color: #020617;
-            font-weight: 600;
-            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35), 0 0 0 1px rgba(15, 23, 42, 0.9);
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: color-mix(in srgb, var(--panel-strong) 90%, black 10%);
+            box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 28%, transparent);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 18px 40px rgba(56, 189, 248, 0.5), 0 0 0 1px rgba(15, 23, 42, 0.9);
-            background: linear-gradient(135deg, var(--accent-hover), var(--accent));
-        }
-
-        .btn-ghost {
-            color: var(--text-muted);
-            background: rgba(15, 23, 42, 0.6);
-            border-color: rgba(148, 163, 184, 0.5);
-        }
-
-        .btn-ghost:hover {
+        .btn-secondary,
+        .btn-subtle {
             color: var(--text-main);
-            background: rgba(15, 23, 42, 0.9);
-            transform: translateY(-1px);
+            background: color-mix(in srgb, var(--surface) 76%, transparent 24%);
+            border-color: var(--border-soft);
         }
 
-        .btn-icon {
-            font-size: 1rem;
+        .btn-subtle {
+            color: var(--text-muted);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .btn-subtle:hover,
+        .btn-primary:focus-visible,
+        .btn-secondary:focus-visible,
+        .btn-subtle:focus-visible {
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus-visible,
+        .btn-subtle:hover,
+        .btn-subtle:focus-visible {
+            border-color: color-mix(in srgb, var(--accent) 38%, var(--border-soft));
+            background: var(--accent-soft);
+            color: var(--text-main);
+        }
+
+        .sidebar-card {
+            display: grid;
+            gap: 1rem;
+            align-content: start;
+        }
+
+        .eyebrow {
+            width: fit-content;
+            padding: 0.34rem 0.72rem;
+            background: color-mix(in srgb, var(--surface-alt) 76%, transparent 24%);
+            color: var(--accent);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .sidebar-card h2,
+        .section-header h2,
+        .cta-card h2 {
+            font-size: clamp(1.35rem, 2vw, 1.65rem);
+            line-height: 1.15;
+        }
+
+        .sidebar-copy,
+        .section-copy,
+        .footer-copy {
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-size: 0.94rem;
+        }
+
+        .fact-list,
+        .proof-list,
+        .value-list,
+        .download-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .fact-item,
+        .proof-item,
+        .value-item,
+        .download-card {
+            padding: 0.95rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-soft);
+            background: color-mix(in srgb, var(--panel-soft) 80%, transparent 20%);
+        }
+
+        .fact-item strong,
+        .proof-item strong,
+        .value-item strong {
+            display: block;
+            margin-bottom: 0.32rem;
+            font-size: 0.97rem;
+        }
+
+        .fact-item p,
+        .proof-item p,
+        .value-item p,
+        .download-card p {
+            color: var(--text-muted);
+            line-height: 1.58;
+            font-size: 0.92rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
+        .tag {
+            padding: 0.45rem 0.78rem;
+            background: color-mix(in srgb, var(--surface-alt) 68%, transparent 32%);
+            color: var(--text-main);
+            font-size: 0.82rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+            gap: 1.15rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .section-card {
+            display: grid;
+            gap: 1.05rem;
+        }
+
+        .section-header {
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .section-kicker {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--accent);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .stat-card {
+            padding: 0.95rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-soft);
+            background: color-mix(in srgb, var(--surface) 74%, transparent 26%);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 1.35rem;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card span {
+            color: var(--text-muted);
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .proof-list {
+            grid-template-columns: 1fr;
+        }
+
+        .download-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .download-card:hover,
+        .download-card:focus-visible {
+            outline: none;
+            border-color: color-mix(in srgb, var(--accent) 38%, var(--border-soft));
+            background: var(--accent-soft);
+        }
+
+        .download-label {
+            display: grid;
+            gap: 0.22rem;
+        }
+
+        .download-label strong {
+            font-size: 0.95rem;
+        }
+
+        .download-arrow {
+            color: var(--accent);
+            font-size: 1.05rem;
+        }
+
+        .cta-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) auto;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.15rem;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 84%, transparent 16%), color-mix(in srgb, var(--surface-alt) 55%, transparent 45%));
+        }
+
+        .footer-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: color-mix(in srgb, var(--surface) 72%, transparent 28%);
         }
 
         .footer-note {
-            margin-top: 1.35rem;
-            font-size: 0.78rem;
             color: var(--text-muted);
-            text-align: center;
+            font-size: 0.84rem;
+            line-height: 1.55;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 980px) {
             .hero-layout,
-            .content-grid {
+            .content-grid,
+            .cta-card {
                 grid-template-columns: 1fr;
             }
 
-            .spotlight-panel {
-                order: -1;
+            .stats-row {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
-            .meta {
-                grid-template-columns: 1fr;
+            .footer-card {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
         @media (max-width: 760px) {
-            .card {
-                padding: 1.55rem 1rem;
-                border-radius: 20px;
+            body {
+                padding: 0.85rem;
             }
 
-            .hero {
+            .page-inner {
+                padding: 0.8rem;
+            }
+
+            .topbar,
+            .hero-card,
+            .sidebar-card,
+            .section-card,
+            .cta-card,
+            .footer-card {
+                padding: 1.05rem;
+                border-radius: 18px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+
+            .hero-intro {
                 grid-template-columns: 1fr;
                 justify-items: start;
             }
 
-            .meta {
+            h1 {
+                max-width: none;
+                font-size: clamp(2rem, 10vw, 2.75rem);
+            }
+
+            .stats-row {
                 grid-template-columns: 1fr;
             }
 
-            h1 {
-                max-width: none;
+            .download-card {
+                align-items: flex-start;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .actions a {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <main class="card">
-        <div class="card-inner">
-            <div class="hero-layout">
-                <section class="hero-panel">
-                    <div class="pill">
-                        <span class="pill-dot"></span>
-                        <span>Open to software architecture and principal engineering roles</span>
-                    </div>
+    <div class="page-shell">
+        <div class="page-inner">
+            <header class="topbar">
+                <div class="brand">
+                    <span class="brand-name">Rahul Lore</span>
+                    <span class="brand-role">Software Architect • Principal Software Engineer • Applied AI & Distributed Systems</span>
+                </div>
+                <nav class="nav-links" aria-label="Section navigation">
+                    <a href="#overview">Overview</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#value">Employer value</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </header>
 
-                    <div class="hero">
-                        <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
-                            <div class="avatar-inner"></div>
+            <main>
+                <div class="hero-layout" id="overview">
+                    <section class="hero-card" aria-labelledby="hero-heading">
+                        <div class="pill">
+                            <span class="pill-dot"></span>
+                            <span>Open to software architecture and principal engineering roles</span>
                         </div>
-                        <div>
-                            <div class="profile-name">Rahul Lore</div>
-                            <div class="profile-role">Software Architect • Principal Software Engineer • Distributed Systems, Healthcare Platforms, and Applied AI</div>
+
+                        <div class="hero-intro">
+                            <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
+                                <div class="avatar-inner"></div>
+                            </div>
+                            <div>
+                                <div class="profile-name">Rahul Lore</div>
+                                <p class="profile-role">Software Architect • Principal Software Engineer • Distributed Systems, Healthcare Platforms, and Applied AI</p>
+                            </div>
                         </div>
+
+                        <div class="hero-copy">
+                            <h1 id="hero-heading">Senior engineering leadership grounded in shipped systems, not just strategy.</h1>
+                            <p class="lede">
+                                I design and modernize production software for teams that need architecture depth, real delivery experience,
+                                and practical AI adoption. My background spans healthcare platforms, distributed .NET services, real-time telemetry,
+                                deployment automation, and applied AI workflows that stay connected to business logic.
+                            </p>
+                        </div>
+
+                        <div class="summary-card">
+                            Recent work includes Kafka- and SignalR-based streaming for patient vitals and waveform telemetry, modernization of
+                            legacy healthcare applications into distributed services, and a hosted .NET and Nuxt demo that shows how Semantic Kernel,
+                            embeddings, semantic search, and AI-assisted workflows can support real products without turning them into hype-driven experiments.
+                        </div>
+
+                        <div class="stats-row" aria-label="Profile summary highlights">
+                            <div class="stat-card">
+                                <strong>20+ years</strong>
+                                <span>Engineering experience across architecture, modernization, and hands-on delivery.</span>
+                            </div>
+                            <div class="stat-card">
+                                <strong>Real-time systems</strong>
+                                <span>Built healthcare telemetry and distributed backend flows where latency and reliability matter.</span>
+                            </div>
+                            <div class="stat-card">
+                                <strong>Applied AI</strong>
+                                <span>Semantic Kernel, embeddings, semantic search, and AI-assisted workflow design.</span>
+                            </div>
+                        </div>
+
+                        <div class="actions" id="contact">
+                            <a class="btn-primary" href="https://rahullore.com/demo1" target="_blank" rel="noopener noreferrer">
+                                <span>🤖</span>
+                                <span>View live AI demo</span>
+                            </a>
+                            <a class="btn-secondary" href="https://www.linkedin.com/in/rahullore" target="_blank" rel="noopener noreferrer">
+                                <span>🔗</span>
+                                <span>View LinkedIn</span>
+                            </a>
+                            <a class="btn-subtle" href="mailto:rahullore@gmail.com" rel="noopener">
+                                <span>✉️</span>
+                                <span>Contact</span>
+                            </a>
+                        </div>
+                    </section>
+
+                    <aside class="sidebar-card" aria-labelledby="sidebar-heading">
+                        <div class="eyebrow">At a glance</div>
+                        <h2 id="sidebar-heading">What hiring managers can scan quickly</h2>
+                        <p class="sidebar-copy">
+                            A concise view of the profile narrative, technical range, and review materials so the page feels easy to scan instead of scattered.
+                        </p>
+
+                        <div class="fact-list">
+                            <div class="fact-item">
+                                <strong>Core positioning</strong>
+                                <p>Software architect who modernizes long-lived systems while still shipping code, mentoring teams, and keeping delivery grounded.</p>
+                            </div>
+                            <div class="fact-item">
+                                <strong>Recent engineering focus</strong>
+                                <p>Real-time patient telemetry, distributed backend services, deployment automation, and AI-assisted workflows backed by a live demo.</p>
+                            </div>
+                            <div class="fact-item">
+                                <strong>Technical range</strong>
+                                <p>.NET, Kafka, SignalR, Docker, Azure, SQL Server, Semantic Kernel, OpenAI embeddings, and operational observability.</p>
+                            </div>
+                        </div>
+
+                        <div class="tag-row" aria-label="Key topics">
+                            <span class="tag">Kafka event streaming</span>
+                            <span class="tag">Semantic Kernel</span>
+                            <span class="tag">Embeddings + semantic search</span>
+                            <span class="tag">Healthcare systems</span>
+                            <span class="tag">Containerized CI/CD</span>
+                        </div>
+
+                        <div class="download-list" aria-label="Downloads">
+                            <a class="download-card" href="rahullore_OP.pdf" download>
+                                <div class="download-label">
+                                    <strong>Resume</strong>
+                                    <p>Download the current PDF resume.</p>
+                                </div>
+                                <span class="download-arrow">→</span>
+                            </a>
+                            <a class="download-card" href="rahullore_CL.pdf" download>
+                                <div class="download-label">
+                                    <strong>Cover letter</strong>
+                                    <p>Download the current PDF cover letter.</p>
+                                </div>
+                                <span class="download-arrow">→</span>
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="content-grid">
+                    <section class="section-card" id="experience" aria-labelledby="experience-heading">
+                        <div class="section-header">
+                            <span class="section-kicker">Work experience highlights</span>
+                            <h2 id="experience-heading">Concrete engineering work with clear technical depth</h2>
+                            <p class="section-copy">
+                                These highlights keep the profile employer-facing while staying specific about shipped systems, platform work, and technical responsibility.
+                            </p>
+                        </div>
+
+                        <div class="proof-list">
+                            <div class="proof-item">
+                                <strong>Real-time patient telemetry delivery</strong>
+                                <p>Architected Kafka- and SignalR-based streaming platforms that delivered patient vitals and waveform telemetry across clinical systems with low-latency message flow.</p>
+                            </div>
+                            <div class="proof-item">
+                                <strong>Applied AI demo built and hosted end to end</strong>
+                                <p>Built and hosted a .NET and Nuxt demo at rahullore.com/demo1 that uses Semantic Kernel, embeddings, semantic search, and AI-assisted workflows alongside deterministic business logic.</p>
+                            </div>
+                            <div class="proof-item">
+                                <strong>Healthcare platform modernization</strong>
+                                <p>Led the move from legacy healthcare applications toward cloud-native and event-driven services using Docker and distributed backend components.</p>
+                            </div>
+                            <div class="proof-item">
+                                <strong>Deployment automation and observability</strong>
+                                <p>Built containerized CI/CD pipelines for zero-touch deployments and implemented centralized logging with Seq and Serilog to improve production monitoring and troubleshooting.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section-card" id="value" aria-labelledby="value-heading">
+                        <div class="section-header">
+                            <span class="section-kicker">Employer value</span>
+                            <h2 id="value-heading">Why this profile feels credible to technical teams</h2>
+                            <p class="section-copy">
+                                The goal is to show seniority, substance, and current-market relevance without overstating the work or relying on generic buzzwords.
+                            </p>
+                        </div>
+
+                        <div class="value-list">
+                            <div class="value-item">
+                                <strong>Specific distributed-systems work</strong>
+                                <p>Hands-on delivery in event streaming, resilient backend services, and real-time healthcare data movement.</p>
+                            </div>
+                            <div class="value-item">
+                                <strong>Supported AI experience</strong>
+                                <p>Experience with Semantic Kernel, embeddings, semantic search, and AI-assisted workflows shown through a live hosted demo.</p>
+                            </div>
+                            <div class="value-item">
+                                <strong>Operational focus</strong>
+                                <p>Work shaped by deployment reliability, observability, maintainability, and environments where uptime matters.</p>
+                            </div>
+                            <div class="value-item">
+                                <strong>Senior execution</strong>
+                                <p>Ability to connect architecture decisions, delivery planning, and hands-on implementation without losing momentum.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="cta-card" aria-labelledby="cta-heading">
+                    <div>
+                        <div class="section-kicker">Best fit</div>
+                        <h2 id="cta-heading">Strong fit for teams that need architecture judgment and working software.</h2>
+                        <p class="section-copy">
+                            Best aligned with organizations modernizing established platforms, shipping operationally critical systems, or adding practical AI capabilities that must work in real production environments.
+                        </p>
                     </div>
-
-                    <h1>Built real-time healthcare platforms and shipped AI-assisted .NET systems with a live demo employers can review.</h1>
-                    <p class="subtitle">
-                        Software Architect with 20+ years of engineering experience across healthcare, distributed .NET services, platform modernization,
-                        and applied AI work including Semantic Kernel, embeddings, semantic search, and AI-assisted workflows.
-                    </p>
-
-                    <div class="summary">
-                        My recent work includes architecting Kafka- and SignalR-based streaming for patient vitals and waveform telemetry, modernizing
-                        legacy healthcare applications into distributed services, and building a hosted .NET and Nuxt demo that shows how deterministic
-                        business logic can work alongside embeddings, semantic search, and AI-assisted workflows.
-                    </div>
-
-                    <div class="actions hero-actions">
-                        <a
-                            class="btn-primary"
-                            href="https://rahullore.com/demo1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <span class="btn-icon">🤖</span>
-                            <span>View live AI demo</span>
-                        </a>
-                        <a
-                            class="btn-ghost"
-                            href="https://www.linkedin.com/in/rahullore"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <span class="btn-icon">🔗</span>
-                            <span>View LinkedIn</span>
-                        </a>
-                        <a class="btn-ghost" href="mailto:rahullore@gmail.com" rel="noopener">
-                            <span class="btn-icon">✉️</span>
-                            <span>Contact</span>
-                        </a>
+                    <div class="actions">
+                        <a class="btn-primary" href="mailto:rahullore@gmail.com" rel="noopener">Start a conversation</a>
                     </div>
                 </section>
+            </main>
 
-                <aside class="spotlight-panel">
-                    <div class="section-label">At a glance</div>
-                    <h2>What teams can scan in under a minute</h2>
-
-                    <div class="meta meta-rail">
-                        <div class="meta-card">
-                            <strong>Core positioning</strong>
-                            Software architect focused on modernizing long-lived healthcare platforms and adding practical AI capabilities without hype.
-                        </div>
-                        <div class="meta-card">
-                            <strong>Recent engineering focus</strong>
-                            Real-time patient telemetry, distributed backend services, deployment automation, and AI-assisted workflows backed by a live demo.
-                        </div>
-                        <div class="meta-card">
-                            <strong>Technical range</strong>
-                            .NET, Kafka, SignalR, Docker, Azure, SQL Server, Semantic Kernel, and OpenAI embeddings.
-                        </div>
-                    </div>
-
-                    <div class="tag-row tag-rail">
-                        <span class="tag">Kafka event streaming</span>
-                        <span class="tag">Semantic Kernel</span>
-                        <span class="tag">Embeddings + semantic search</span>
-                        <span class="tag">Healthcare systems</span>
-                        <span class="tag">Containerized CI/CD</span>
-                    </div>
-
-                    <p class="mini-note">
-                        Includes a live demo plus downloadable resume and cover letter so hiring managers can quickly review both the narrative and the work.
-                    </p>
-
-                    <div class="quick-links">
-                        <a class="btn-ghost" href="rahullore_OP.pdf" download>
-                            <span class="btn-icon">📄</span>
-                            <span>Download Resume (PDF)</span>
-                        </a>
-                        <a class="btn-ghost" href="rahullore_CL.pdf" download>
-                            <span class="btn-icon">📝</span>
-                            <span>Download Cover Letter</span>
-                        </a>
-                    </div>
-                </aside>
-            </div>
-
-            <hr class="divider" />
-
-            <div class="content-grid">
-                <section class="section">
-                    <div class="section-label">Work experience highlights</div>
-                    <h2>Concrete engineering work</h2>
-                    <div class="experience-list">
-                        <div class="experience-item">
-                            <strong>Real-time patient telemetry delivery</strong>
-                            <p>
-                                Architected Kafka- and SignalR-based streaming platforms that delivered patient vitals and waveform telemetry across
-                                clinical systems with low-latency message flow.
-                            </p>
-                        </div>
-                        <div class="experience-item">
-                            <strong>Applied AI demo built and hosted end to end</strong>
-                            <p>
-                                Built and hosted a .NET and Nuxt demo at rahullore.com/demo1 that uses Semantic Kernel, embeddings, semantic search,
-                                and AI-assisted workflows alongside deterministic business logic.
-                            </p>
-                        </div>
-                        <div class="experience-item">
-                            <strong>Healthcare platform modernization</strong>
-                            <p>
-                                Led the move from legacy healthcare applications toward cloud-native and event-driven services using Docker and
-                                distributed backend components.
-                            </p>
-                        </div>
-                        <div class="experience-item">
-                            <strong>Deployment automation and observability</strong>
-                            <p>
-                                Built containerized CI/CD pipelines for zero-touch deployments and implemented centralized logging with Seq and
-                                Serilog to improve production monitoring and troubleshooting.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <div class="section-label">What employers get</div>
-                    <h2>Why this profile is credible</h2>
-                    <div class="market-list">
-                        <div class="market-item">
-                            <strong>Specific distributed-systems work</strong>
-                            <p>Hands-on delivery in event streaming, resilient backend services, and real-time healthcare data movement.</p>
-                        </div>
-                        <div class="market-item">
-                            <strong>Supported AI experience</strong>
-                            <p>Experience with Semantic Kernel, embeddings, semantic search, and AI-assisted workflows shown through a live hosted demo.</p>
-                        </div>
-                        <div class="market-item">
-                            <strong>Operational focus</strong>
-                            <p>Work shaped by deployment reliability, observability, maintainability, and environments where uptime matters.</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="section value-section" style="margin-top: 1.25rem;">
-                <div class="section-label">Potential employer value</div>
-                <h2>Best fit for teams that need credible architecture and hands-on delivery</h2>
-                <ul class="value-list">
-                    <li>Build and modernize distributed healthcare systems that handle real-time telemetry and low-latency data delivery.</li>
-                    <li>Add practical AI capabilities such as Semantic Kernel, embeddings, semantic search, and AI-assisted workflows without losing control of core business logic.</li>
-                    <li>Bridge architecture decisions and hands-on engineering with live, reviewable demos and operationally focused delivery.</li>
-                </ul>
-            </div>
-
-            <p class="footer-note">
-                Polished into a clearer, scan-friendly profile for technical hiring managers while keeping the content grounded and concise.
-            </p>
+            <footer class="footer-card">
+                <div class="footer-copy">
+                    Polished into a more structured, scan-friendly portfolio with clearer hierarchy, better section separation, improved responsive behavior, and optional light/dark theme support.
+                </div>
+                <div class="footer-note">Single-page HTML portfolio • Minimal UI • Professional hiring-manager focus</div>
+            </footer>
         </div>
-    </main>
+    </div>
 </body>
 </html>
