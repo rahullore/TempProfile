@@ -435,6 +435,121 @@
             margin-bottom: 1.15rem;
         }
 
+        .story-section {
+            position: relative;
+            min-height: 152vh;
+            margin-bottom: 1.15rem;
+        }
+
+        .story-sticky {
+            position: sticky;
+            top: 1rem;
+        }
+
+        .story-card {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            gap: 1.2rem;
+            align-items: start;
+            padding: 1.4rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-soft);
+            background:
+                linear-gradient(135deg, color-mix(in srgb, var(--surface) 88%, transparent 12%), color-mix(in srgb, var(--surface-alt) 44%, transparent 56%));
+            box-shadow: var(--shadow-md);
+        }
+
+        .story-intro {
+            display: grid;
+            gap: 0.9rem;
+            align-content: start;
+        }
+
+        .story-label {
+            width: fit-content;
+            padding: 0.34rem 0.72rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            background: color-mix(in srgb, var(--surface-alt) 75%, transparent 25%);
+            color: var(--accent);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .story-intro h2 {
+            font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+            line-height: 1.08;
+            max-width: 14ch;
+        }
+
+        .story-intro p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            max-width: 42ch;
+        }
+
+        .story-copy {
+            display: grid;
+            gap: 0.85rem;
+            align-content: center;
+            min-height: 18rem;
+        }
+
+        .story-line {
+            font-size: clamp(1.45rem, 3.6vw, 3rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            font-weight: 700;
+            color: color-mix(in srgb, var(--text-muted) 70%, transparent 30%);
+            opacity: 0.38;
+            transform: translateY(10px) scale(0.985);
+            transform-origin: left center;
+            transition: color 0.28s ease, opacity 0.28s ease, transform 0.28s ease, text-shadow 0.28s ease;
+            will-change: transform, opacity;
+        }
+
+        .story-line.is-visible {
+            opacity: 0.68;
+            color: color-mix(in srgb, var(--text-soft) 84%, var(--text-muted) 16%);
+            transform: translateY(0) scale(1);
+        }
+
+        .story-line.is-active {
+            opacity: 1;
+            color: var(--accent);
+            text-shadow: 0 0 28px color-mix(in srgb, var(--accent) 18%, transparent 82%);
+        }
+
+        .story-line.is-final {
+            letter-spacing: -0.05em;
+        }
+
+        .story-line.is-final.is-active,
+        .story-line.is-final.is-visible {
+            color: color-mix(in srgb, var(--accent) 75%, white 25%);
+            transform: translateY(0) scale(1.03);
+        }
+
+        .story-steps {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .story-step {
+            height: 28vh;
+        }
+
+        .story-step:first-child {
+            margin-top: 18vh;
+        }
+
+        .story-step:last-child {
+            height: 42vh;
+        }
+
         .section-card {
             display: grid;
             gap: 1.05rem;
@@ -537,6 +652,7 @@
 
         @media (max-width: 980px) {
             .hero-layout,
+            .story-card,
             .content-grid,
             .cta-card {
                 grid-template-columns: 1fr;
@@ -549,6 +665,14 @@
             .footer-card {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .story-section {
+                min-height: 126vh;
+            }
+
+            .story-copy {
+                min-height: 16rem;
             }
         }
 
@@ -585,6 +709,44 @@
                 justify-items: start;
             }
 
+            .story-section {
+                min-height: auto;
+            }
+
+            .story-sticky {
+                position: static;
+            }
+
+            .story-card {
+                gap: 1rem;
+            }
+
+            .story-intro h2 {
+                max-width: none;
+            }
+
+            .story-copy {
+                min-height: auto;
+            }
+
+            .story-line {
+                font-size: clamp(1.2rem, 8vw, 2rem);
+                opacity: 0.82;
+                transform: none;
+            }
+
+            .story-step {
+                height: 20vh;
+            }
+
+            .story-step:first-child {
+                margin-top: 12vh;
+            }
+
+            .story-step:last-child {
+                height: 26vh;
+            }
+
             h1 {
                 max-width: none;
                 font-size: clamp(2rem, 10vw, 2.75rem);
@@ -606,6 +768,40 @@
                 width: 100%;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .story-section {
+                min-height: auto;
+            }
+
+            .story-sticky {
+                position: static;
+            }
+
+            .story-copy {
+                min-height: auto;
+            }
+
+            .story-line {
+                opacity: 1;
+                transform: none;
+                transition: none;
+                color: var(--text-main);
+                text-shadow: none;
+            }
+
+            .story-line.is-final {
+                color: var(--accent);
+            }
+
+            .story-steps {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -618,6 +814,7 @@
                 </div>
                 <nav class="nav-links" aria-label="Section navigation">
                     <a href="#overview">Overview</a>
+                    <a href="#story">Story</a>
                     <a href="#experience">Experience</a>
                     <a href="#value">Employer value</a>
                     <a href="#contact">Contact</a>
@@ -737,6 +934,39 @@
                     </aside>
                 </div>
 
+                <section class="story-section" id="story" aria-labelledby="story-heading">
+                    <div class="story-sticky">
+                        <div class="story-card">
+                            <div class="story-intro">
+                                <div class="story-label">Architecture story</div>
+                                <h2 id="story-heading">A concise way to describe how I design production systems.</h2>
+                                <p>
+                                    This section ties the portfolio message to scroll progress: editorial in tone, technical in content,
+                                    and subtle enough to support the page rather than overpower it.
+                                </p>
+                            </div>
+
+                            <div class="story-copy" aria-live="polite">
+                                <div class="story-line is-visible is-active" data-story-line="0">DISTRIBUTED SYSTEMS</div>
+                                <div class="story-line" data-story-line="1">HANDLE FAILURE</div>
+                                <div class="story-line" data-story-line="2">CONNECT DEVICES</div>
+                                <div class="story-line" data-story-line="3">MOVE DATA</div>
+                                <div class="story-line" data-story-line="4">AI, INTELLIGENTLY APPLIED</div>
+                                <div class="story-line is-final" data-story-line="5">RELIABLE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-steps" aria-hidden="true">
+                        <div class="story-step" data-story-step="0"></div>
+                        <div class="story-step" data-story-step="1"></div>
+                        <div class="story-step" data-story-step="2"></div>
+                        <div class="story-step" data-story-step="3"></div>
+                        <div class="story-step" data-story-step="4"></div>
+                        <div class="story-step" data-story-step="5"></div>
+                    </div>
+                </section>
+
                 <div class="content-grid">
                     <section class="section-card" id="experience" aria-labelledby="experience-heading">
                         <div class="section-header">
@@ -819,5 +1049,76 @@
             </footer>
         </div>
     </div>
+    <script>
+        (() => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const storySection = document.querySelector('#story');
+            const lines = Array.from(document.querySelectorAll('[data-story-line]'));
+
+            if (!storySection || !lines.length) {
+                return;
+            }
+
+            const setActiveIndex = (activeIndex) => {
+                lines.forEach((line, index) => {
+                    const isVisible = index <= activeIndex;
+                    const isActive = index === activeIndex;
+                    line.classList.toggle('is-visible', isVisible);
+                    line.classList.toggle('is-active', isActive);
+                });
+            };
+
+            const applyReducedMotion = () => {
+                lines.forEach((line, index) => {
+                    line.classList.add('is-visible');
+                    line.classList.toggle('is-active', index === lines.length - 1);
+                });
+            };
+
+            let interactiveEnabled = false;
+            let ticking = false;
+
+            const updateFromScroll = () => {
+                ticking = false;
+                if (!interactiveEnabled) {
+                    return;
+                }
+
+                const rect = storySection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                const total = Math.max(storySection.offsetHeight - viewportHeight * 0.45, 1);
+                const traveled = Math.min(Math.max(viewportHeight * 0.24 - rect.top, 0), total);
+                const progress = traveled / total;
+                const activeIndex = Math.min(lines.length - 1, Math.floor(progress * lines.length));
+                setActiveIndex(activeIndex);
+            };
+
+            const requestScrollUpdate = () => {
+                if (ticking) {
+                    return;
+                }
+                ticking = true;
+                window.requestAnimationFrame(updateFromScroll);
+            };
+
+            const updateMode = () => {
+                interactiveEnabled = !(prefersReducedMotion.matches || window.innerWidth <= 760);
+
+                if (!interactiveEnabled) {
+                    applyReducedMotion();
+                    return;
+                }
+
+                setActiveIndex(0);
+                requestScrollUpdate();
+            };
+
+            updateMode();
+            const motionListener = () => updateMode();
+            prefersReducedMotion.addEventListener('change', motionListener);
+            window.addEventListener('resize', updateMode);
+            window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+        })();
+    </script>
 </body>
 </html>
