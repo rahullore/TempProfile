@@ -972,7 +972,7 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 0.85rem;
         }
 
@@ -980,6 +980,7 @@
             display: grid;
             align-content: start;
             gap: 0.75rem;
+            min-width: 0;
             min-height: 100%;
             padding: 1rem;
             border: 1px solid var(--border-subtle);
@@ -1000,12 +1001,14 @@
         }
 
         .skill-tag {
+            max-width: 100%;
             padding: 0.28rem 0.48rem;
             border: 1px solid var(--border-subtle);
             border-radius: 999px;
             color: var(--text-muted);
             font-size: 0.78rem;
             line-height: 1.25;
+            overflow-wrap: anywhere;
         }
 
         .signal-section {
@@ -1625,7 +1628,7 @@
                             </div>
                         </section>
                         <section class="skill-group" aria-labelledby="skills-cloud">
-                            <h3 id="skills-cloud">Cloud, DevOps &amp; Reliability</h3>
+                            <h3 id="skills-cloud">Cloud &amp; Reliability</h3>
                             <div class="skill-tags">
                                 <span class="skill-tag">Azure</span>
                                 <span class="skill-tag">Docker</span>
@@ -1637,7 +1640,7 @@
                             </div>
                         </section>
                         <section class="skill-group" aria-labelledby="skills-data">
-                            <h3 id="skills-data">Data &amp; Healthcare Integration</h3>
+                            <h3 id="skills-data">Healthcare &amp; Data</h3>
                             <div class="skill-tags">
                                 <span class="skill-tag">SQL Server</span>
                                 <span class="skill-tag">Entity Framework</span>
