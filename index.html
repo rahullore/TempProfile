@@ -1142,6 +1142,48 @@
             background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 84%, transparent 16%), color-mix(in srgb, var(--surface-alt) 55%, transparent 45%));
         }
 
+        .contact-card {
+            grid-template-columns: minmax(0, 1fr) minmax(220px, auto);
+            align-items: end;
+            padding: clamp(1.35rem, 3vw, 2rem);
+        }
+
+        .contact-description {
+            max-width: 62ch;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .contact-details {
+            display: grid;
+            justify-items: start;
+            gap: 0.7rem;
+        }
+
+        .contact-email {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: color-mix(in srgb, var(--accent-primary) 55%, transparent);
+            text-underline-offset: 0.2em;
+        }
+
+        .contact-email:hover,
+        .contact-email:focus-visible {
+            color: var(--accent-primary);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .contact-links .btn-secondary {
+            white-space: nowrap;
+        }
+
         .footer-card {
             display: flex;
             align-items: center;
@@ -1398,7 +1440,7 @@
                             </p>
                         </div>
 
-                        <div class="actions" id="contact">
+                        <div class="actions">
                             <a class="btn-primary" href="#experience">
                                 <span>Explore My Work</span>
                                 <span class="btn-arrow" aria-hidden="true">→</span>
@@ -1622,23 +1664,25 @@
                     </div>
                 </section>
 
-                <section class="cta-card" aria-labelledby="cta-heading">
+                <section class="cta-card contact-card" id="contact" aria-labelledby="cta-heading">
                     <div>
-                        <div class="section-kicker">Best fit</div>
-                        <h2 id="cta-heading">Strong fit for teams that need architecture judgment and working software.</h2>
-                        <p class="section-copy">
-                            Best aligned with organizations modernizing established platforms, shipping operationally critical systems, or adding practical AI capabilities that must work in real production environments.
-                        </p>
+                        <div class="section-kicker">Contact</div>
+                        <h2 id="cta-heading">Let's Build Something That Lasts.</h2>
+                        <p class="contact-description">Whether you're modernizing an existing platform, designing a distributed system, or bringing new capabilities into a complex environment, I'd welcome a conversation about the engineering challenges you're solving.</p>
                     </div>
-                    <div class="actions">
-                        <a class="btn-primary" href="mailto:rahullore@gmail.com" rel="noopener"><span>Start a conversation</span><span class="btn-arrow" aria-hidden="true">→</span></a>
+                    <div class="contact-details">
+                        <a class="contact-email" href="mailto:rahullore@gmail.com">rahullore@gmail.com</a>
+                        <div class="contact-links">
+                            <a class="btn-primary" href="mailto:rahullore@gmail.com"><span>Get in Touch</span><span class="btn-arrow" aria-hidden="true">→</span></a>
+                            <a class="btn-secondary" href="https://www.linkedin.com/in/rahullore/" target="_blank" rel="noopener noreferrer"><span>Connect on LinkedIn</span><span class="btn-arrow" aria-hidden="true">↗</span></a>
+                        </div>
                     </div>
                 </section>
             </main>
 
             <footer class="footer-card">
                 <div class="footer-copy">Rahul Lore · Software Architect</div>
-                <div class="footer-note">Distributed systems · Healthcare platforms · Applied AI</div>
+                <div class="footer-note">© 2026 Rahul Lore</div>
             </footer>
         </div>
     </div>
