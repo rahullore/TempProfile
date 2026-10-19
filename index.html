@@ -230,6 +230,27 @@
             min-width: 0;
         }
 
+        .hero-eyebrow {
+            width: fit-content;
+            color: var(--text-muted);
+            font-size: var(--font-size-label);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            line-height: 1.4;
+        }
+
+        .hero-card h1 {
+            max-width: 18ch;
+        }
+
+        .hero-subheading {
+            color: var(--accent-primary);
+            font-size: clamp(0.86rem, 1.5vw, 1rem);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 1.5;
+        }
+
         .pill {
             width: fit-content;
             padding: 0.38rem 0.78rem;
@@ -1084,57 +1105,24 @@
             <main>
                 <div class="hero-layout" id="overview">
                     <section class="hero-card" aria-labelledby="hero-heading">
-                        <div class="pill">
-                            <span class="pill-dot"></span>
-                            <span>Open to software architecture and principal engineering roles</span>
-                        </div>
-
-                        <div class="hero-intro">
-                            <div class="avatar-ring" role="img" aria-label="Portrait of Rahul Lore">
-                                <div class="avatar-inner"></div>
-                            </div>
-                            <div>
-                                <div class="profile-name">Rahul Lore</div>
-                                <p class="profile-role">Software Architect • Principal Software Engineer • Distributed Systems, Healthcare Platforms, and Applied AI</p>
-                            </div>
-                        </div>
+                        <div class="hero-eyebrow">RAHUL LORE · SOFTWARE ARCHITECT</div>
 
                         <div class="hero-copy">
-                            <h1 id="hero-heading">Software Architect</h1>
-                            <p class="hero-specialism">Distributed Systems | Healthcare Platforms | Applied AI</p>
+                            <h1 id="hero-heading">Engineering reliable systems for the real world.</h1>
+                            <p class="hero-subheading">Healthcare Platforms · Distributed Systems · Edge Computing · Applied AI</p>
                             <p class="lede">
-                                I design and modernize reliable software platforms, from real-time healthcare systems and edge computing
-                                to distributed backend services and practical AI applications.
+                                I'm a Software Architect with over 20 years of experience designing and modernizing enterprise software. My work spans real-time healthcare systems, distributed backend services, high-availability edge platforms, and practical AI applications. I combine architectural thinking with hands-on engineering to build systems that are reliable, maintainable, and ready for production.
                             </p>
-                        </div>
-
-                        <div class="stats-row" aria-label="Profile summary highlights">
-                            <div class="stat-card">
-                                <strong>20+ years</strong>
-                                <span>Engineering experience across architecture, modernization, and hands-on delivery.</span>
-                            </div>
-                            <div class="stat-card">
-                                <strong>Real-time systems</strong>
-                                <span>Built healthcare telemetry and distributed backend flows where latency and reliability matter.</span>
-                            </div>
-                            <div class="stat-card">
-                                <strong>Applied AI</strong>
-                                <span>Semantic Kernel, embeddings, semantic search, and AI-assisted workflow design.</span>
-                            </div>
                         </div>
 
                         <div class="actions" id="contact">
                             <a class="btn-primary" href="#experience">
-                                <span>View Projects</span>
+                                <span>Explore My Work</span>
                                 <span class="btn-arrow" aria-hidden="true">→</span>
                             </a>
                             <a class="btn-secondary" href="rahullore_OP.pdf" download>
-                                <span>Download Résumé</span>
+                                <span>View Résumé</span>
                                 <span class="btn-arrow" aria-hidden="true">↓</span>
-                            </a>
-                            <a class="btn-subtle" href="mailto:rahullore@gmail.com" rel="noopener">
-                                <span>Contact</span>
-                                <span class="btn-arrow" aria-hidden="true">→</span>
                             </a>
                         </div>
                     </section>
