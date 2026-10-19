@@ -515,6 +515,25 @@
             font-size: 0.92rem;
         }
 
+        .value-list {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .value-item {
+            min-height: 100%;
+            padding: 1.2rem;
+        }
+
+        .value-index {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
         .case-study-card {
             display: grid;
             gap: 0.95rem;
@@ -1006,7 +1025,8 @@
             .story-card,
             .content-grid,
             .cta-card,
-            .ai-showcase-layout {
+            .ai-showcase-layout,
+            .value-list {
                 grid-template-columns: 1fr;
             }
 
@@ -1507,22 +1527,26 @@
 
                     <section class="section-card" id="value" aria-labelledby="value-heading">
                         <div class="section-header">
-                            <span class="section-kicker">Employer value</span>
-                            <h2 id="value-heading">What I bring to technical teams</h2>
+                            <span class="section-kicker">Why architecture judgment matters</span>
+                            <h2 id="value-heading">Why Organizations Bring Me In</h2>
+                            <p class="section-copy">Complex software doesn't become difficult overnight. Over time, systems grow, integrations multiply, and decisions that once worked become obstacles to scale, reliability, and change.</p>
                         </div>
 
                         <div class="value-list">
                             <div class="value-item">
-                                <strong>Specific distributed-systems work</strong>
-                                <p>Hands-on delivery in event streaming, resilient backend services, and real-time healthcare data movement.</p>
+                                <span class="value-index" aria-hidden="true">01</span>
+                                <strong>Modernize Without Unnecessary Disruption</strong>
+                                <p>I help teams evolve legacy platforms and introduce modern architectures while respecting existing business workflows and integrations.</p>
                             </div>
                             <div class="value-item">
-                                <strong>Operational focus</strong>
-                                <p>Work shaped by deployment reliability, observability, maintainability, and environments where uptime matters.</p>
+                                <span class="value-index" aria-hidden="true">02</span>
+                                <strong>Design for Reliability</strong>
+                                <p>I focus on resilient messaging, high availability, maintainable distributed services, and practical operational visibility—especially in healthcare and edge environments.</p>
                             </div>
                             <div class="value-item">
-                                <strong>Senior execution</strong>
-                                <p>Ability to connect architecture decisions, delivery planning, and hands-on implementation without losing momentum.</p>
+                                <span class="value-index" aria-hidden="true">03</span>
+                                <strong>Bridge Architecture and Implementation</strong>
+                                <p>I stay close to the code, deployment infrastructure, and production challenges so architectural decisions remain practical for the teams responsible for operating the system.</p>
                             </div>
                         </div>
                     </section>
