@@ -465,16 +465,14 @@
 
         .fact-list,
         .proof-list,
-        .value-list,
-        .download-list {
+        .value-list {
             display: grid;
             gap: 0.8rem;
         }
 
         .fact-item,
         .proof-item,
-        .value-item,
-        .download-card {
+        .value-item {
             padding: 0.95rem 1rem;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-subtle);
@@ -512,8 +510,7 @@
 
         .fact-item p,
         .proof-item p,
-        .value-item p,
-        .download-card p {
+        .value-item p {
             color: var(--text-muted);
             line-height: 1.58;
             font-size: 0.92rem;
@@ -830,43 +827,6 @@
 
         .proof-list {
             grid-template-columns: 1fr;
-        }
-
-        .download-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .download-card:hover,
-        .download-card:focus-visible {
-            outline: none;
-            border-color: color-mix(in srgb, var(--accent-primary) 38%, var(--border-subtle));
-            background: var(--accent-soft);
-            transform: translateX(4px);
-        }
-
-        .download-label {
-            display: grid;
-            gap: 0.22rem;
-        }
-
-        .download-label strong {
-            font-size: 0.95rem;
-        }
-
-        .download-arrow {
-            color: var(--accent-primary);
-            font-size: 1.05rem;
-            transition: transform 0.18s ease, opacity 0.18s ease;
-        }
-
-        .download-card:hover .download-arrow,
-        .download-card:focus-visible .download-arrow {
-            transform: translateX(4px);
         }
 
         .featured-project {
@@ -1302,10 +1262,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .download-card {
-                align-items: flex-start;
-            }
-
             .actions {
                 flex-direction: column;
             }
@@ -1325,9 +1281,7 @@
             .stat-card,
             .proof-item,
             .value-item,
-            .download-card,
             .btn-arrow,
-            .download-arrow,
             .signal-marquee-track {
                 transition: none;
                 animation: none;
@@ -1416,22 +1370,6 @@
                             </div>
                         </div>
 
-                        <div class="download-list" aria-label="Downloads">
-                            <a class="download-card" href="rahullore_OP.pdf" download>
-                                <div class="download-label">
-                                    <strong>Resume</strong>
-                                    <p>Download the current PDF resume.</p>
-                                </div>
-                                <span class="download-arrow">→</span>
-                            </a>
-                            <a class="download-card" href="rahullore_CL.pdf" download>
-                                <div class="download-label">
-                                    <strong>Cover letter</strong>
-                                    <p>Download the current PDF cover letter.</p>
-                                </div>
-                                <span class="download-arrow">→</span>
-                            </a>
-                        </div>
                     </aside>
                 </div>
 
