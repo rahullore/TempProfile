@@ -568,6 +568,77 @@
             font-weight: 600;
         }
 
+        .ai-showcase-card {
+            display: grid;
+            gap: 1.15rem;
+            border-color: color-mix(in srgb, var(--accent-primary) 30%, var(--border-subtle));
+            background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 92%, var(--accent-soft) 8%), var(--surface));
+        }
+
+        .ai-showcase-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .ai-showcase-copy,
+        .ai-showcase-panel {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .ai-showcase-title {
+            display: block;
+            margin-bottom: 0.28rem;
+            color: var(--text-primary);
+            font-size: clamp(1.2rem, 2vw, 1.45rem);
+            line-height: 1.2;
+        }
+
+        .ai-showcase-category {
+            color: var(--accent-primary);
+            font-size: var(--font-size-small);
+            font-weight: 700;
+        }
+
+        .ai-showcase-copy p {
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        .ai-showcase-label {
+            color: var(--text-primary);
+            font-size: 0.86rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .ai-showcase-panel {
+            align-content: center;
+            padding: 1.1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            background: color-mix(in srgb, var(--surface-alt) 58%, var(--surface) 42%);
+        }
+
+        .ai-showcase-panel strong {
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .ai-showcase-url {
+            overflow-wrap: anywhere;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .ai-showcase-card .btn-primary {
+            width: fit-content;
+        }
+
         .tag {
             padding: 0.45rem 0.78rem;
             background: color-mix(in srgb, var(--surface-alt) 68%, transparent 32%);
@@ -934,7 +1005,8 @@
             .signal-grid,
             .story-card,
             .content-grid,
-            .cta-card {
+            .cta-card,
+            .ai-showcase-layout {
                 grid-template-columns: 1fr;
             }
 
@@ -1392,10 +1464,36 @@
                                     <span class="technology-tag">CI/CD</span>
                                 </div>
                             </article>
-                            <div class="proof-item">
-                                <strong>Applied AI demo built and hosted end to end</strong>
-                                <p>Built and hosted a .NET and Nuxt demo at rahullore.com/demo1 that uses Semantic Kernel, embeddings, semantic search, and AI-assisted workflows alongside deterministic business logic.</p>
-                            </div>
+                            <article class="proof-item case-study-card ai-showcase-card">
+                                <div class="ai-showcase-layout">
+                                    <div class="ai-showcase-copy">
+                                        <div>
+                                            <strong class="ai-showcase-title">Applied AI — From Architecture to Working Software</strong>
+                                            <div class="ai-showcase-category">Personal Engineering Project · Applied AI</div>
+                                        </div>
+                                        <p>A hands-on application demonstrating how modern AI capabilities can be integrated into real software systems. Built using a Nuxt frontend and .NET backend, with Semantic Kernel and OpenAI embeddings as part of the application architecture.</p>
+                                        <div>
+                                            <strong class="ai-showcase-label">What It Demonstrates</strong>
+                                            <p>Connecting modern frontend experiences, backend APIs, AI integration, and automated deployment into a working application.</p>
+                                        </div>
+                                    </div>
+                                    <div class="ai-showcase-panel">
+                                        <strong>Personal technical demo</strong>
+                                        <span class="ai-showcase-url">https://rahullore.com/demo1/</span>
+                                        <a class="btn-primary" href="https://rahullore.com/demo1/" target="_blank" rel="noopener noreferrer">
+                                            <span>Explore Live Demo</span>
+                                            <span class="btn-arrow" aria-hidden="true">↗</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="technology-list" aria-label="Technologies used">
+                                    <span class="technology-tag">Nuxt</span>
+                                    <span class="technology-tag">.NET</span>
+                                    <span class="technology-tag">Semantic Kernel</span>
+                                    <span class="technology-tag">OpenAI Embeddings</span>
+                                    <span class="technology-tag">GitHub Actions</span>
+                                </div>
+                            </article>
                             <div class="proof-item">
                                 <strong>Healthcare platform modernization</strong>
                                 <p>Led the move from legacy healthcare applications toward cloud-native and event-driven services using Docker and distributed backend components.</p>
