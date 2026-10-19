@@ -952,6 +952,62 @@
             transform: translateX(4px);
         }
 
+        .skills-section {
+            display: grid;
+            gap: 1.05rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .skills-header {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .skills-kicker {
+            color: var(--accent-primary);
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+
+        .skill-group {
+            display: grid;
+            align-content: start;
+            gap: 0.75rem;
+            min-height: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            background: color-mix(in srgb, var(--surface-panel-soft) 80%, transparent 20%);
+        }
+
+        .skill-group h3 {
+            color: var(--text-primary);
+            font-size: 0.98rem;
+            line-height: 1.25;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.42rem;
+        }
+
+        .skill-tag {
+            padding: 0.28rem 0.48rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: 999px;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            line-height: 1.25;
+        }
+
         .signal-section {
             display: grid;
             gap: 1.05rem;
@@ -1107,7 +1163,8 @@
             .content-grid,
             .cta-card,
             .ai-showcase-layout,
-            .value-list {
+            .value-list,
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1424,35 +1481,6 @@
                     </div>
                 </section>
 
-                <section class="signal-section" aria-labelledby="signal-heading">
-                    <div class="signal-header">
-                        <div>
-                            <div class="signal-kicker">Current signal</div>
-                            <h2 id="signal-heading">Technical focus</h2>
-                        </div>
-                    </div>
-
-                    <div class="signal-grid">
-                        <section class="signal-card" aria-label="Current technical signal">
-                            <div class="signal-list">
-                                <div class="signal-item"><span class="signal-dot" aria-hidden="true"></span><div><div class="signal-name">Agentic AI</div><div class="signal-meta">Practical orchestration and workflow design</div></div></div>
-                                <div class="signal-item"><span class="signal-dot" aria-hidden="true"></span><div><div class="signal-name">Distributed Systems</div><div class="signal-meta">Resilience, state, and service boundaries</div></div></div>
-                                <div class="signal-item"><span class="signal-dot" aria-hidden="true"></span><div><div class="signal-name">Edge Architecture</div><div class="signal-meta">Latency-aware topology and device-adjacent design</div></div></div>
-                                <div class="signal-item"><span class="signal-dot" aria-hidden="true"></span><div><div class="signal-name">Healthcare Technology</div><div class="signal-meta">Operationally critical platforms and telemetry</div></div></div>
-                                <div class="signal-item"><span class="signal-dot" aria-hidden="true"></span><div><div class="signal-name">.NET</div><div class="signal-meta">Modern backend delivery and long-lived systems</div></div></div>
-                                <div class="signal-item"><span class="signal-dot" aria-hidden="true"></span><div><div class="signal-name">RAG</div><div class="signal-meta">Search-grounded AI tied to business logic</div></div></div>
-                            </div>
-                        </section>
-
-                        <div class="signal-marquee" aria-label="Current signal marquee">
-                            <div class="signal-marquee-track">
-                                <div class="signal-marquee-content">DISTRIBUTED SYSTEMS — EDGE — AI — HEALTHCARE — .NET — ARCHITECTURE — DISTRIBUTED SYSTEMS — EDGE — AI — HEALTHCARE — .NET — ARCHITECTURE —</div>
-                                <div class="signal-marquee-content" aria-hidden="true">DISTRIBUTED SYSTEMS — EDGE — AI — HEALTHCARE — .NET — ARCHITECTURE — DISTRIBUTED SYSTEMS — EDGE — AI — HEALTHCARE — .NET — ARCHITECTURE —</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 <div class="content-grid">
                     <section class="section-card" id="experience" aria-labelledby="experience-heading">
                         <div class="section-header">
@@ -1530,6 +1558,69 @@
                         </div>
                     </section>
                 </div>
+
+                <section class="skills-section" aria-labelledby="skills-heading">
+                    <div class="skills-header">
+                        <div class="skills-kicker">Technical expertise</div>
+                        <h2 id="skills-heading">Architecture capability in practice</h2>
+                    </div>
+                    <div class="skills-grid">
+                        <section class="skill-group" aria-labelledby="skills-architecture">
+                            <h3 id="skills-architecture">Architecture &amp; Design</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Distributed Systems</span>
+                                <span class="skill-tag">Event-Driven Architecture</span>
+                                <span class="skill-tag">High Availability</span>
+                                <span class="skill-tag">Edge Computing</span>
+                                <span class="skill-tag">Enterprise Modernization</span>
+                            </div>
+                        </section>
+                        <section class="skill-group" aria-labelledby="skills-backend">
+                            <h3 id="skills-backend">Backend &amp; Messaging</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">C#</span>
+                                <span class="skill-tag">.NET</span>
+                                <span class="skill-tag">ASP.NET Core</span>
+                                <span class="skill-tag">Kafka</span>
+                                <span class="skill-tag">SignalR</span>
+                                <span class="skill-tag">REST APIs</span>
+                                <span class="skill-tag">Background Services</span>
+                            </div>
+                        </section>
+                        <section class="skill-group" aria-labelledby="skills-cloud">
+                            <h3 id="skills-cloud">Cloud, DevOps &amp; Reliability</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">CI/CD</span>
+                                <span class="skill-tag">GitHub Actions</span>
+                                <span class="skill-tag">Keepalived</span>
+                                <span class="skill-tag">Seq</span>
+                                <span class="skill-tag">Serilog</span>
+                            </div>
+                        </section>
+                        <section class="skill-group" aria-labelledby="skills-data">
+                            <h3 id="skills-data">Data &amp; Healthcare Integration</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SQL Server</span>
+                                <span class="skill-tag">Entity Framework</span>
+                                <span class="skill-tag">Redis</span>
+                                <span class="skill-tag">HL7</span>
+                                <span class="skill-tag">Medical Device Integration</span>
+                            </div>
+                        </section>
+                        <section class="skill-group" aria-labelledby="skills-ai">
+                            <h3 id="skills-ai">Frontend &amp; Applied AI</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Nuxt</span>
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Semantic Kernel</span>
+                                <span class="skill-tag">OpenAI Embeddings</span>
+                            </div>
+                        </section>
+                    </div>
+                </section>
 
                 <section class="cta-card" aria-labelledby="cta-heading">
                     <div>
