@@ -534,6 +534,87 @@
             letter-spacing: 0.08em;
         }
 
+        .career-timeline {
+            position: relative;
+            display: grid;
+            gap: 1rem;
+            padding: 0.2rem 0 0.2rem 1.45rem;
+        }
+
+        .career-timeline::before {
+            position: absolute;
+            top: 0.7rem;
+            bottom: 0.7rem;
+            left: 0.38rem;
+            width: 1px;
+            background: var(--border-subtle);
+            content: "";
+        }
+
+        .career-entry {
+            position: relative;
+            display: grid;
+            gap: 0.42rem;
+            padding: 0.95rem 1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            background: color-mix(in srgb, var(--surface-panel-soft) 80%, transparent 20%);
+        }
+
+        .career-entry::before {
+            position: absolute;
+            top: 1.25rem;
+            left: -1.45rem;
+            width: 0.58rem;
+            height: 0.58rem;
+            border: 2px solid var(--surface);
+            border-radius: 50%;
+            background: var(--text-muted);
+            box-shadow: 0 0 0 1px var(--border-subtle);
+            content: "";
+        }
+
+        .career-entry-current {
+            border-color: color-mix(in srgb, var(--accent-primary) 34%, var(--border-subtle));
+            background: color-mix(in srgb, var(--accent-soft) 42%, var(--surface-panel-soft) 58%);
+        }
+
+        .career-entry-current::before {
+            background: var(--accent-primary);
+            box-shadow: 0 0 0 1px var(--accent-primary);
+        }
+
+        .career-entry-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .career-entry-header strong {
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .career-entry-role {
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .career-entry-dates {
+            flex-shrink: 0;
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            white-space: nowrap;
+        }
+
+        .career-entry p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.58;
+        }
+
         .case-study-card {
             display: grid;
             gap: 0.95rem;
@@ -1081,6 +1162,12 @@
                 justify-content: flex-start;
             }
 
+            .career-entry-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
             .hero-intro {
                 grid-template-columns: 1fr;
                 justify-items: start;
@@ -1369,159 +1456,51 @@
                 <div class="content-grid">
                     <section class="section-card" id="experience" aria-labelledby="experience-heading">
                         <div class="section-header">
-                            <span class="section-kicker">Work experience highlights</span>
-                            <h2 id="experience-heading">Selected engineering work</h2>
+                            <span class="section-kicker">Professional experience</span>
+                            <h2 id="experience-heading">Career timeline</h2>
                         </div>
 
-                        <div class="proof-list">
-                            <article class="proof-item case-study-card">
-                                <div>
-                                    <strong>Real-Time Clinical Telemetry Architecture</strong>
-                                    <div class="case-study-category">Healthcare · Distributed Systems</div>
-                                </div>
-                                <div class="case-study-details">
-                                    <div class="case-study-detail">
-                                        <strong>The Challenge</strong>
-                                        <p>Clinical monitoring systems generate continuous streams of vital signs and waveform data that must be processed and delivered reliably across connected applications.</p>
+                        <div class="career-timeline">
+                            <article class="career-entry career-entry-current">
+                                <div class="career-entry-header">
+                                    <div>
+                                        <strong>Talis Clinical</strong>
+                                        <div class="career-entry-role">Software Architect</div>
                                     </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Approach</strong>
-                                        <p>Designed event-driven backend architectures using Kafka for messaging and SignalR for real-time data delivery, supporting scalable clinical data processing and integration workflows.</p>
-                                    </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Contribution</strong>
-                                        <p>Led architectural design for distributed services, live telemetry delivery, system modernization, and resilient message routing.</p>
-                                    </div>
+                                    <div class="career-entry-dates">2016–Present</div>
                                 </div>
-                                <div class="technology-list" aria-label="Technologies used">
-                                    <span class="technology-tag">C#</span>
-                                    <span class="technology-tag">ASP.NET Core</span>
-                                    <span class="technology-tag">Kafka</span>
-                                    <span class="technology-tag">SignalR</span>
-                                    <span class="technology-tag">HL7</span>
-                                </div>
+                                <p>Architecting distributed healthcare systems, real-time patient telemetry platforms, medical device integrations, highly available edge services, and containerized deployment infrastructure.</p>
                             </article>
-                            <article class="proof-item case-study-card">
-                                <div>
-                                    <strong>High-Availability Edge Computing</strong>
-                                    <div class="case-study-category">Edge Architecture · Reliability Engineering</div>
-                                </div>
-                                <div class="case-study-details">
-                                    <div class="case-study-detail">
-                                        <strong>The Challenge</strong>
-                                        <p>Clinical environments need reliable, locally deployed software capable of connecting medical devices and forwarding data without depending on complex infrastructure at every location.</p>
+                            <article class="career-entry">
+                                <div class="career-entry-header">
+                                    <div>
+                                        <strong>CitiusTech</strong>
+                                        <div class="career-entry-role">Solution Architect</div>
                                     </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Approach</strong>
-                                        <p>Architected a lightweight Raspberry Pi-based platform using Linux, Docker, ASP.NET Core services, and HL7 integration. Designed high-availability mechanisms using Keepalived and virtual IP failover.</p>
-                                    </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Contribution</strong>
-                                        <p>Designed the edge software architecture, containerized deployment approach, and resilience mechanisms needed to operate distributed clinical services.</p>
-                                    </div>
+                                    <div class="career-entry-dates">2012–2016</div>
                                 </div>
-                                <div class="technology-list" aria-label="Technologies used">
-                                    <span class="technology-tag">Raspberry Pi</span>
-                                    <span class="technology-tag">Linux</span>
-                                    <span class="technology-tag">Docker</span>
-                                    <span class="technology-tag">.NET</span>
-                                    <span class="technology-tag">HL7</span>
-                                    <span class="technology-tag">Keepalived</span>
-                                </div>
+                                <p>Modernized enterprise healthcare applications, contributed to anesthesia platform modernization, designed .NET application architectures, and provided technical guidance across development teams.</p>
                             </article>
-                            <article class="proof-item case-study-card">
-                                <div>
-                                    <strong>Modernizing Mission-Critical Healthcare Applications</strong>
-                                    <div class="case-study-category">Legacy Modernization · Enterprise Architecture</div>
-                                </div>
-                                <div class="case-study-details">
-                                    <div class="case-study-detail">
-                                        <strong>The Challenge</strong>
-                                        <p>Healthcare applications often depend on mature software platforms that cannot be replaced overnight without affecting existing workflows and integrations.</p>
+                            <article class="career-entry">
+                                <div class="career-entry-header">
+                                    <div>
+                                        <strong>Capgemini</strong>
+                                        <div class="career-entry-role">Senior Consultant</div>
                                     </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Approach</strong>
-                                        <p>Worked on modernizing anesthesia software from VB6 toward .NET, integrating HTML5 interfaces with legacy applications and maintaining architectural consistency across development teams.</p>
-                                    </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Contribution</strong>
-                                        <p>Provided solution architecture guidance, supported technology migration, and worked across teams to introduce modern capabilities while protecting existing application behavior.</p>
-                                    </div>
+                                    <div class="career-entry-dates">2010–2012</div>
                                 </div>
-                                <div class="technology-list" aria-label="Technologies used">
-                                    <span class="technology-tag">C#</span>
-                                    <span class="technology-tag">.NET</span>
-                                    <span class="technology-tag">VB6 Modernization</span>
-                                    <span class="technology-tag">HTML5</span>
-                                    <span class="technology-tag">Enterprise Integration</span>
-                                </div>
+                                <p>Developed reusable .NET frameworks, optimized database performance, and implemented caching and application performance improvements.</p>
                             </article>
-                            <article class="proof-item case-study-card">
-                                <div>
-                                    <strong>Secure Software Delivery for Restricted Networks</strong>
-                                    <div class="case-study-category">Edge Deployment · DevOps · Infrastructure Architecture</div>
-                                </div>
-                                <div class="case-study-details">
-                                    <div class="case-study-detail">
-                                        <strong>The Challenge</strong>
-                                        <p>Deploying and updating containerized software across distributed edge devices becomes more complicated when devices cannot access the public internet.</p>
+                            <article class="career-entry">
+                                <div class="career-entry-header">
+                                    <div>
+                                        <strong>Bank of America Merrill Lynch</strong>
+                                        <div class="career-entry-role">Analyst</div>
                                     </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Approach</strong>
-                                        <p>Designed a controlled software distribution architecture that mirrors approved container images from a central registry to an authenticated on-premise registry, allowing edge devices to retrieve software locally.</p>
-                                    </div>
-                                    <div class="case-study-detail">
-                                        <strong>My Contribution</strong>
-                                        <p>Designed container image distribution, registry security, certificate trust, and repeatable deployment workflows for Linux-based edge environments.</p>
-                                    </div>
+                                    <div class="career-entry-dates">2007–2010</div>
                                 </div>
-                                <div class="technology-list" aria-label="Technologies used">
-                                    <span class="technology-tag">Docker</span>
-                                    <span class="technology-tag">Container Registry</span>
-                                    <span class="technology-tag">Skopeo</span>
-                                    <span class="technology-tag">TLS</span>
-                                    <span class="technology-tag">Linux</span>
-                                    <span class="technology-tag">CI/CD</span>
-                                </div>
+                                <p>Developed enterprise .NET applications, reusable components, multithreaded processing, and performance-oriented application frameworks.</p>
                             </article>
-                            <article class="proof-item case-study-card ai-showcase-card">
-                                <div class="ai-showcase-layout">
-                                    <div class="ai-showcase-copy">
-                                        <div>
-                                            <strong class="ai-showcase-title">Applied AI — From Architecture to Working Software</strong>
-                                            <div class="ai-showcase-category">Personal Engineering Project · Applied AI</div>
-                                        </div>
-                                        <p>A hands-on application demonstrating how modern AI capabilities can be integrated into real software systems. Built using a Nuxt frontend and .NET backend, with Semantic Kernel and OpenAI embeddings as part of the application architecture.</p>
-                                        <div>
-                                            <strong class="ai-showcase-label">What It Demonstrates</strong>
-                                            <p>Connecting modern frontend experiences, backend APIs, AI integration, and automated deployment into a working application.</p>
-                                        </div>
-                                    </div>
-                                    <div class="ai-showcase-panel">
-                                        <strong>Personal technical demo</strong>
-                                        <span class="ai-showcase-url">https://rahullore.com/demo1/</span>
-                                        <a class="btn-primary" href="https://rahullore.com/demo1/" target="_blank" rel="noopener noreferrer">
-                                            <span>Explore Live Demo</span>
-                                            <span class="btn-arrow" aria-hidden="true">↗</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="technology-list" aria-label="Technologies used">
-                                    <span class="technology-tag">Nuxt</span>
-                                    <span class="technology-tag">.NET</span>
-                                    <span class="technology-tag">Semantic Kernel</span>
-                                    <span class="technology-tag">OpenAI Embeddings</span>
-                                    <span class="technology-tag">GitHub Actions</span>
-                                </div>
-                            </article>
-                            <div class="proof-item">
-                                <strong>Healthcare platform modernization</strong>
-                                <p>Led the move from legacy healthcare applications toward cloud-native and event-driven services using Docker and distributed backend components.</p>
-                            </div>
-                            <div class="proof-item">
-                                <strong>Deployment automation and observability</strong>
-                                <p>Built containerized CI/CD pipelines for zero-touch deployments and implemented centralized logging with Seq and Serilog to improve production monitoring and troubleshooting.</p>
-                            </div>
                         </div>
                     </section>
 
