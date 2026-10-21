@@ -24,7 +24,7 @@ jobs:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_SSH_KEY }}
-        source: "index.html,rahul.jpeg,rahullore_CL.pdf,rahullore_OP.pdf"
+        source: "index.html,assets,rahul.jpeg,rahullore_CL.pdf,rahullore_OP.pdf"
         target: "/var/www/rahullore/"
 
     - name: Fix permissions and reload Caddy
@@ -41,6 +41,3 @@ jobs:
           chmod -R 755 /var/www/rahullore
           # Reload Caddy to pick up changes
           systemctl reload caddy
-
-
-    
