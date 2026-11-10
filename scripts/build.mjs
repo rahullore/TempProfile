@@ -11,7 +11,7 @@ await mkdir(client, { recursive: true });
 await mkdir(server, { recursive: true });
 
 await mkdir(resolve(client, "assets"), { recursive: true });
-for (const asset of ["livedata.png", "mdilink.png", "customer-orders-live.png", "og.png"]) {
+for (const asset of ["livedata.png", "mdilink.png", "customer-orders-live.png", "og.png", "stock-research-demo.mp4", "stock-research-poster.png", "stock-research-research.png"]) {
   await cp(resolve(root, "assets", asset), resolve(client, "assets", asset));
 }
 await cp(resolve(root, "rahullore_OP.pdf"), resolve(client, "rahullore_OP.pdf"));
